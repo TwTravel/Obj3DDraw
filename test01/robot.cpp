@@ -28,12 +28,13 @@ main(int argc, char **argv)
   Light1->SetValue(POSITION, -2, -3, 1.5, 1);
   Light1->SetValue(SPOT_DIRECTION, 2, 3, -1.5);
   Light1->SetValue(CUTOFFANGLE, 40.0);
-  Light1->TurnOn();
+  Light1->TurnOn();     Light1->nodename="Light1";
+   //string nodespace;
 
   Light2->SetValue(POSITION, 5, 5, 5, 0);
   Light2->SetValue(SPECULAR, 1.0, 1.0, 1.0, 1.0);
   Light2->SetValue(DIFFUSE, 1.0, 1.0, 1.0, 1.0);
-  Light2->TurnOn();
+  Light2->TurnOn();  Light2->nodename="Light2";
 
 
   //Nodes for Camera:
@@ -45,36 +46,38 @@ main(int argc, char **argv)
   Camera1->SetValue(ASPECT, 1);
   Camera1->SetValue(NEAR, 0.1);
   Camera1->SetValue(FAR, 200);
-  Camera1->SetValue(YANGLE, 50);
+  Camera1->SetValue(YANGLE, 50); 
+  Camera1->nodename="Camera1";
   
   //Nodes for Robot:
-  Material *RobotMat=new Material;
-  Material *EyeMat=new Material;
+  Material *RobotMat=new Material; RobotMat  ->nodename="Robot_RobotMaterial"; 
+  Material *EyeMat  =new Material; EyeMat    ->nodename="Robot_EyeMaterial  "; 
+  Material *PaperMat  =new Material; PaperMat    ->nodename="Robot_PaperMaterial  "; 
+  
+  Cylinder *Base  =new Cylinder;  Base  ->nodename="Robot_Base"; 
+  Sphere   *Head  =new Sphere;    Head  ->nodename="Robot_Head"; 
+  Sphere   *EyeL  =new Sphere;    EyeL  ->nodename="Robot_EyeL"; 
+  Sphere   *EyeR  =new Sphere;    EyeR  ->nodename="Robot_EyeR"; 
+  Cylinder *UpperArmL=new Cylinder; UpperArmL->nodename="Robot_UpperArmL";
+  Cylinder *UpperArmR=new Cylinder; UpperArmR->nodename="Robot_UpperArmR";
+  Cylinder *LowerArmL=new Cylinder; LowerArmL->nodename="Robot_LowerArmL";
+  Cylinder *LowerArmR=new Cylinder; LowerArmR->nodename="Robot_LowerArmR";
+  Cylinder *UpperLegL=new Cylinder; UpperLegL->nodename="Robot_UpperLegL";
+  Cylinder *UpperLegR=new Cylinder; UpperLegR->nodename="Robot_UpperLegR";
+  Cylinder *LowerLegL=new Cylinder; LowerLegL->nodename="Robot_LowerLegL";
+  Cylinder *LowerLegR=new Cylinder; LowerLegR->nodename="Robot_LowerLegR";
+  Polygon  *Paper=new Polygon; Paper ->nodename= "paper";
 
-  Cylinder *Base=new Cylinder;
-  Sphere *Head=new Sphere;
-  Sphere *EyeL=new Sphere;
-  Sphere *EyeR=new Sphere;
-  Cylinder *UpperArmL=new Cylinder;
-  Cylinder *UpperArmR=new Cylinder;
-  Cylinder *LowerArmL=new Cylinder;
-  Cylinder *LowerArmR=new Cylinder;
-  Cylinder *UpperLegL=new Cylinder;
-  Cylinder *UpperLegR=new Cylinder;
-  Cylinder *LowerLegL=new Cylinder;
-  Cylinder *LowerLegR=new Cylinder;
-  Polygon *Paper=new Polygon;
-
-  Transformation *EyeLTrans=new Transformation;
-  Transformation *EyeRTrans=new Transformation;
-  Transformation *HeadTrans=new Transformation;
-  Transformation *UpArmLTrans=new Transformation;
-  Transformation *UpArmRTrans=new Transformation;
-  Transformation *LowArmTrans=new Transformation;
-  Transformation *UpLegLTrans=new Transformation;
-  Transformation *UpLegRTrans=new Transformation;
-  Transformation *LowLegTrans=new Transformation;
-  Transformation *BaseTrans=new Transformation;
+  Transformation *EyeLTrans  =new Transformation; EyeLTrans   ->nodename="Robot_TF_EyeLTrans  ";  
+  Transformation *EyeRTrans  =new Transformation; EyeRTrans   ->nodename="Robot_TF_EyeRTrans  ";  
+  Transformation *HeadTrans  =new Transformation; HeadTrans   ->nodename="Robot_TF_HeadTrans  ";  
+  Transformation *UpArmLTrans=new Transformation; UpArmLTrans ->nodename="Robot_TF_UpArmLTrans";  
+  Transformation *UpArmRTrans=new Transformation; UpArmRTrans ->nodename="Robot_TF_UpArmRTrans";  
+  Transformation *LowArmTrans=new Transformation; LowArmTrans ->nodename="Robot_TF_LowArmTrans";  
+  Transformation *UpLegLTrans=new Transformation; UpLegLTrans ->nodename="Robot_TF_UpLegLTrans";  
+  Transformation *UpLegRTrans=new Transformation; UpLegRTrans ->nodename="Robot_TF_UpLegRTrans";  
+  Transformation *LowLegTrans=new Transformation; LowLegTrans ->nodename="Robot_TF_LowLegTrans"; 
+  Transformation *BaseTrans  =new Transformation; BaseTrans   ->nodename="Robot_TF_BaseTrans  "; 
 
   //Robot Value:
   RobotMat->SetValue(DIFFUSE, 0.0, 0.0, 1.0, 1.0);
@@ -87,6 +90,11 @@ main(int argc, char **argv)
   EyeMat->SetValue(SPECULAR, 1.0, 1.0, 1.0, 1.0);
   EyeMat->SetValue(SHININESS, 100.0);
 
+  PaperMat  ->SetValue(DIFFUSE, 1.0, 1.0, 1.0, 1.0);    
+  PaperMat  ->SetValue(AMBIENT, 1.0, 1.0, 1.0, 1.0);  
+  PaperMat  ->SetValue(SPECULAR, 1.0, 1.0, 1.0, 1.0); 
+  PaperMat  ->SetValue(SHININESS, 100.0);             
+  
   Base->SetValue(HEIGHT, BaseLen);
   Base->SetValue(RADIUS, BaseRadius);
   Head->SetValue(RADIUS, BaseRadius);
@@ -110,7 +118,7 @@ main(int argc, char **argv)
   LowerLegR->SetValue(RADIUS, Radius);
 
   Paper->SetVerticesv(v, 4);
-  Paper->SetMaterial(EyeMat);
+  Paper->SetMaterial(PaperMat);
 
   EyeLTrans->SetValue(TRANSLATION, BaseRadius-EyeRadius/2, 0, 0, 0);
   EyeLTrans->SetValue(ROTATION, 30, 0, 0, 1, 1);
@@ -155,7 +163,7 @@ main(int argc, char **argv)
   Paper->SetTransform(TRANSLATION, 0.05, -0.15, -0.2, 1);
 
   //Set Relationship in Robot:
-  RobotMat->AddChild(Light1);
+  RobotMat->AddChild(Light1); 
   Light1->AddChild(Base);
 
   Base->AddChild(Off1);
@@ -176,13 +184,13 @@ main(int argc, char **argv)
   LowerArmR->AddChild(Paper);
 
   //Nodes for Chair:
-  Cube *Seat=new Cube(0.7, 0.06, 0.7);
-  Line *Leg1=new Line;
-  Line *Leg2=new Line;
-  Line *Leg3=new Line;
-  Line *Leg4=new Line;
-  DrawStyle *LegStyle=new DrawStyle;
-  Color *ChairColor=new Color;
+  Cube *Seat=new Cube(0.7, 0.06, 0.7);    Seat->nodename= "Chair_Seat";
+  Line *Leg1=new Line;                    Leg1->nodename= "Chair_Leg1";
+  Line *Leg2=new Line;                    Leg2->nodename= "Chair_Leg2";
+  Line *Leg3=new Line;                    Leg3->nodename= "Chair_Leg3";
+  Line *Leg4=new Line;                    Leg4->nodename= "Chair_Leg4";
+  DrawStyle *LegStyle  =new DrawStyle;    LegStyle  ->nodename="LegStyle  ";
+  Color     *ChairColor=new Color;        ChairColor->nodename="ChairColor";
   
   //Chair Value:
   float v1[][3]={{-0.3, 0, 0.3},{-0.35, -1*ChairLegLen, 0.3}};
@@ -213,13 +221,13 @@ main(int argc, char **argv)
   Trans1->SetValue(TRANSLATION, -0.5, 0, 0, 2);
 
   Trans1->AddChild(ChairColor);
-  Trans1->AddChild(RobotMat);
+  Trans1->AddChild(RobotMat); Trans1->nodename= "father_tf_robot&chair";
 
   //Root Node:
   Node *Root=new Node;
 
   Root->AddChild(Trans1);
-  Root->AddChild(Camera1);
+  Root->AddChild(Camera1);  Root ->nodename="root node";
   
   //Viewer:
   GLViewer *MyViewer=new GLViewer;

@@ -1,0 +1,7 @@
+base.stl
+forearm.stl
+shoulder.stl
+upperarm.stl
+wrist1.stl
+wrist2.stl
+wrist3.stl

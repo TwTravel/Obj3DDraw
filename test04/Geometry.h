@@ -537,6 +537,67 @@ Polygon::Render()
 
 //=============================================================
 //=============================================================
+/*
+   Calculate RGB from HSV, reverse of RGB2HSV()
+   Hue is in degrees
+   Lightness is between 0 and 1
+   Saturation is between 0 and 1
+*/
+
+Material *GetColorMat(double c1_h, double c1_s, double c1_v)
+{
+	double sat_r, sat_g, sat_b;
+
+   while (c1_h < 0)
+      c1_h += 360;
+   while (c1_h > 360)
+      c1_h -= 360;
+
+   if (c1_h < 120) {
+      sat_r = (120 - c1_h) / 60.0;
+      sat_g = c1_h / 60.0;
+      sat_b = 0;
+   } else if (c1_h < 240) {
+      sat_r = 0;
+      sat_g = (240 - c1_h) / 60.0;
+      sat_b = (c1_h - 120) / 60.0;
+   } else {
+      sat_r = (c1_h - 240) / 60.0;
+      sat_g = 0;
+      sat_b = (360 - c1_h) / 60.0;
+   }
+   sat_r = std::min(sat_r,1.0);
+   sat_g = std::min(sat_g,1.0);
+   sat_b = std::min(sat_b,1.0);
+
+   sat_r = (1 - c1_s + c1_s * sat_r) * c1_v;
+   sat_g = (1 - c1_s + c1_s * sat_g) * c1_v;
+   sat_b = (1 - c1_s + c1_s * sat_b) * c1_v;
+   //==================================================
+   Material *RobotMat=new Material;
+   //Robot Value:
+   RobotMat->SetValue(DIFFUSE, sat_r, sat_g, sat_b, 1.0);
+   RobotMat->SetValue(AMBIENT, sat_r, sat_g, sat_b, 1.0);
+   RobotMat->SetValue(SPECULAR, 1.0, 1.0, 1.0, 1.0);
+   RobotMat->SetValue(SHININESS, 100.0);
+   return RobotMat;
+}
+
+/*struct COLOUR
+{
+};
+
+struct HSV
+{
+};
+
+COLOUR HSV2RGB(HSV c1)
+{
+  
+
+   return(c2);
+}*/
+
 class StlShape: public Geometry
 {
  public:

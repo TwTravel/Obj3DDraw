@@ -50,8 +50,8 @@ main(int argc, char **argv)
   Camera1->nodename="Camera1";
   
   //Nodes for Robot:
-  Material *RobotMat=new Material; RobotMat  ->nodename="Robot_RobotMaterial"; 
-  Material *EyeMat  =new Material; EyeMat    ->nodename="Robot_EyeMaterial  "; 
+  Material *RobotMat  =new Material; RobotMat  ->nodename="Robot_RobotMaterial"; 
+  Material *EyeMat    =new Material; EyeMat    ->nodename="Robot_EyeMaterial  "; 
   Material *PaperMat  =new Material; PaperMat    ->nodename="Robot_PaperMaterial  "; 
   
   //Robot Value:
@@ -93,14 +93,22 @@ main(int argc, char **argv)
   Transformation *StlPart05Tf =new Transformation; StlPart05Tf->nodename="Robot_TF_StlPart05Tf";  
   Transformation *StlPart06Tf =new Transformation; StlPart06Tf->nodename="Robot_TF_StlPart06Tf";  
   Transformation *StlPart07Tf =new Transformation; StlPart07Tf->nodename="Robot_TF_StlPart07Tf";  
-                                                                                                      
-   StlPart01 -> SetMaterial(PaperMat);     
-   StlPart02 -> SetMaterial(PaperMat);     
-   StlPart03 -> SetMaterial(PaperMat);     
-   StlPart04 -> SetMaterial(PaperMat);     
-   StlPart05 -> SetMaterial(PaperMat);    
-   StlPart06 -> SetMaterial(PaperMat);
-   StlPart07 -> SetMaterial(PaperMat);
+                            
+  StlPart01 -> SetMaterial(GetColorMat(360*0.0/8.0, 1.0, 1.0 ));
+  StlPart02 -> SetMaterial(GetColorMat(360*0.0/8.0, 1.0, 1.0 ));
+  StlPart03 -> SetMaterial(GetColorMat(360*0.0/8.0, 1.0, 1.0 ));
+  StlPart04 -> SetMaterial(GetColorMat(360*4.0/8.0, 1.0, 1.0 ));
+  StlPart05 -> SetMaterial(GetColorMat(360*5.0/8.0, 1.0, 1.0 ));
+  StlPart06 -> SetMaterial(GetColorMat(360*6.0/8.0, 1.0, 1.0 ));  
+  StlPart07 -> SetMaterial(GetColorMat(360*7.0/8.0, 1.0, 1.0 ));
+  
+   /*StlPart01 -> SetMaterial(RobotMat);     
+   StlPart02 -> SetMaterial(RobotMat);     
+   StlPart03 -> SetMaterial(RobotMat);     
+   StlPart04 -> SetMaterial(RobotMat);     
+   StlPart05 -> SetMaterial(RobotMat);    
+   StlPart06 -> SetMaterial(RobotMat);
+   StlPart07 -> SetMaterial(RobotMat);*/
      
   /* <body name="ur10:base_link"      pos="0 0        0.435" childclass="ur10:arm">
      <body name="ur10:shoulder_link"  pos="0 0        0.1273">
@@ -108,15 +116,49 @@ main(int argc, char **argv)
      <body name="ur10:forearm_link"   pos="0 -0.1719  0.612">
      <body name="ur10:wrist_1_link"   pos="0 0        0.5723" childclass="ur10:wrist">
      <body name="ur10:wrist_2_link"   pos="0 0.1149   0">
-     <body name="ur10:wrist_3_link"   pos="0 0        0.1157">*/ 
-    
-   StlPart01Tf -> SetValue(TRANSLATION,  0,  0        ,0.435  , 0);                                      
+     <body name="ur10:wrist_3_link"   pos="0 0        0.1157">*/     
+    vec3d  vec1, vec2, vec3, vec4, vec5, vec6, vec7;
+        
+    vec1.x =+ (0       );  vec1.y =   0;vec1.z = ( 0.87  );
+    vec2.x =+ (0       );  vec2.y =   0;vec2.z = ( 0.1273);
+    vec3.x =+ (0.220941);  vec3.y =   0;vec3.z = ( 0     );
+    vec4.x =+ (-0.1719 );  vec4.y =   0;vec4.z = ( 0.612 );
+    vec5.x =+ (0       );  vec5.y =   0;vec5.z = ( 0.5723);
+    vec6.x =+ (0.1149  );  vec6.y =   0;vec6.z = ( 0     );
+    vec7.x =+ (0       );  vec7.y =   0;vec7.z = ( 0.1157);
+	
+   /* vec1.x = 0;  vec1.y =0.435  ; vec1.z = 0        ;
+    vec2.x = 0;  vec2.y =0.1273 ; vec2.z = 0        ;
+    vec3.x = 0;  vec3.y =0      ; vec3.z = 0.220941 ;
+    vec4.x = 0;  vec4.y =0.612  ; vec4.z = -0.1719  ;
+    vec5.x = 0;  vec5.y =0.5723 ; vec5.z = 0        ;
+    vec6.x = 0;  vec6.y =0      ; vec6.z = 0.1149   ;
+    vec7.x = 0;  vec7.y =0.1157 ; vec7.z = 0        ;/* */
+       
+    /*vec2 = vec2 + vec1; 
+    vec3 = vec3 + vec2;
+    vec4 = vec4 + vec3;
+    vec5 = vec5 + vec4;
+    vec6 = vec6 + vec5;
+    vec7 = vec7 + vec6;*/
+               
+           
+   StlPart01Tf -> SetValue(TRANSLATION, vec1.x,  vec1.y , vec1.z , 0);  
+   StlPart02Tf -> SetValue(TRANSLATION, vec2.x,  vec2.y , vec2.z , 0);    
+   StlPart03Tf -> SetValue(TRANSLATION, vec3.x,  vec3.y , vec3.z , 0);    
+   StlPart04Tf -> SetValue(TRANSLATION, vec4.x,  vec4.y , vec4.z , 0);    
+   StlPart05Tf -> SetValue(TRANSLATION, vec5.x,  vec5.y , vec5.z , 0);    
+   StlPart06Tf -> SetValue(TRANSLATION, vec6.x,  vec6.y , vec6.z , 0);    
+   StlPart07Tf -> SetValue(TRANSLATION, vec7.x,  vec7.y , vec7.z , 0);
+                    
+           
+   /*StlPart01Tf -> SetValue(TRANSLATION,  0,  0        ,0.435  , 0);                                      
    StlPart02Tf -> SetValue(TRANSLATION,  0,  0        ,0.1273 , 0);                                    
    StlPart03Tf -> SetValue(TRANSLATION,  0,  0.220941 ,0      , 0);                                   
    StlPart04Tf -> SetValue(TRANSLATION,  0,  -0.1719  ,0.612  , 0);                                     
    StlPart05Tf -> SetValue(TRANSLATION,  0,  0        ,0.5723 , 0);                                     
    StlPart06Tf -> SetValue(TRANSLATION,  0,  0.1149   ,0      , 0);                                    
-   StlPart07Tf -> SetValue(TRANSLATION,  0,  0        ,0.1157 , 0);                                       
+   StlPart07Tf -> SetValue(TRANSLATION,  0,  0        ,0.1157 , 0);*/                                       
              
    StlPart01 -> SetTransform(StlPart01Tf);
    StlPart02 -> SetTransform(StlPart02Tf);
@@ -126,19 +168,25 @@ main(int argc, char **argv)
    StlPart06 -> SetTransform(StlPart06Tf);
    StlPart07 -> SetTransform(StlPart07Tf);   
  
-  StlPart01->AddChild(StlPart02);
-  StlPart02->AddChild(StlPart03);
-  StlPart03->AddChild(StlPart04);
-  StlPart04->AddChild(StlPart05);
-  StlPart05->AddChild(StlPart06);
-  StlPart06->AddChild(StlPart07);
+   StlPart01->AddChild(StlPart02);
+   StlPart02->AddChild(StlPart03);
+   StlPart03->AddChild(StlPart04);
+   StlPart04->AddChild(StlPart05);
+   StlPart05->AddChild(StlPart06);
+   StlPart06->AddChild(StlPart07);
                  
                  
                  
              
 
-  //Set Relationship in Robot:
-  RobotMat->AddChild(Light1); 
+  /*//Set Relationship in Robot:
+  //RobotMat->AddChild(Light1); 
+  Light1->AddChild(StlPart01);
+
+  StlPart01->AddChild(Off1);
+  Off1->AddChild(Light2);*/
+  
+  RobotMat->AddChild(Light1);
   Light1->AddChild(StlPart01);
 
   StlPart01->AddChild(Off1);
@@ -149,8 +197,8 @@ main(int argc, char **argv)
   //Transformation Nodes for both Robot and Chair:
   Transformation *Trans1=new Transformation;
  
-  Trans1->SetValue(TRANSLATION, -0.5, 0, 0, 2);
-  Trans1->AddChild(ChairColor);
+  Trans1->SetValue(TRANSLATION, 0.9, 0, -0.4, 0);
+  //Trans1->AddChild(ChairColor);
   Trans1->AddChild(RobotMat); Trans1->nodename= "father_tf_robot&chair";
 
   //Root Node:
@@ -158,14 +206,15 @@ main(int argc, char **argv)
 
   Root->AddChild(Trans1);
   Root->AddChild(Camera1);  Root ->nodename="root node";
-  Root->AddChild(StlPart01);
+  
+  
   //Viewer:
   GLViewer *MyViewer=new GLViewer;
 
   MyViewer->Init(argc, argv);
   MyViewer->SetValue(BACKCOLOR, GREY);
   MyViewer->SetValue(BUFFER, DOUBLE);
-  MyViewer->CreateWin("Working Hard", 800, 800);
+  MyViewer->CreateWin("Working Hard", 1200, 1200);
 
   MyViewer->Show(Root);
   

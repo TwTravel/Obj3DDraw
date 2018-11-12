@@ -28,9 +28,9 @@ struct vec3d
 vec3d Add3DPt(vec3d Pt1, vec3d Pt2)
 {
 	vec3d tempPt;
-	tempPt.x = Pt1.x + Pt2.x;
-	tempPt.y = Pt1.y + Pt2.y;
-	tempPt.z = Pt1.z + Pt2.z;
+	tempPt.X = Pt1.X + Pt2.X;
+	tempPt.Y = Pt1.Y + Pt2.Y;
+	tempPt.Z = Pt1.Z + Pt2.Z;
 	return tempPt;
 }
 

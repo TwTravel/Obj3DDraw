@@ -63,10 +63,10 @@ bunny.stl, 50.0, 1.0, 1.0, 10, 0, 0, 0, 0, 0,  0,  3,#OBJ(color3)(pos3)(rot4)(sc
 //##################################################################
 //##################################################################  
    strvec.clear(); splitString(lines[1], strvec, ","); 
-   rot_angle   = atof( trim(strvec[1]).c_str() );
-   rot_x       = atof( trim(strvec[2]).c_str() );
-   rot_y       = atof( trim(strvec[3]).c_str() );
-   rot_z       = atof( trim(strvec[4]).c_str() ); 
+   rot_angle   = atof( trim(strvec[0]).c_str() );
+   rot_x       = atof( trim(strvec[1]).c_str() );
+   rot_y       = atof( trim(strvec[2]).c_str() );
+   rot_z       = atof( trim(strvec[3]).c_str() ); 
    strvec.clear(); splitString(lines[2], strvec, ","); 
    trans_x = atof( trim(strvec[1]).c_str() );
    trans_y = atof( trim(strvec[2]).c_str() );
@@ -81,12 +81,7 @@ bunny.stl, 50.0, 1.0, 1.0, 10, 0, 0, 0, 0, 0,  0,  3,#OBJ(color3)(pos3)(rot4)(sc
    int element_num = lines.size() - 3 ;
    StlShape       *StlElements = new StlShape[ element_num ];
    Transformation *StlTrans    = new Transformation[ element_num ];
-   Light *Light1=new Light;
-   Light1->SetValue(POSITION, -2, -3, 1.5, 1);
-   Light1->SetValue(SPOT_DIRECTION, 2, 3, -1.5);
-   Light1->SetValue(CUTOFFANGLE, 40.0);
-   Light1->TurnOn();     Light1->nodename="Light1";
-  
+   
    for( i = 0; i <  element_num; i++ )
    {
 	   strvec.clear(); splitString(lines[3+i], strvec, ",");
@@ -116,18 +111,15 @@ bunny.stl, 50.0, 1.0, 1.0, 10, 0, 0, 0, 0, 0,  0,  3,#OBJ(color3)(pos3)(rot4)(sc
 	   
 	   StlElements[i].SetTransform(&StlTrans[i]);
        StlElements[i].LoadStl((char*)trim(fname).c_str());
-       StlElements[i].SetMaterial(GetColorMat(360*0.0/8.0, 1.0, 1.0 ));//GetColorMat(mat_h, mat_s, mat_v ));
+       StlElements[i].SetMaterial(GetColorMat(360*7.0/8.0, 1.0, 1.0 ));
        
 	   SysTrans->AddChild(&StlElements[i]);
 	   printf( "%s\n", trim(lines[i]).c_str() );
    }
   
   
-  
-  
   Node *Root=new Node;
-  Root->AddChild(Light1);
-  Light1->AddChild(SysTrans);
+  Root->AddChild(SysTrans);
   Root->AddChild(Camera1);  Root ->nodename="root node";
   
   //Viewer:

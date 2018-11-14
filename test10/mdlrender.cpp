@@ -107,7 +107,8 @@ bunny.stl, 50.0, 1.0, 1.0, 10, 0, 0, 0, 0, 0,  0,  3,#OBJ(color3)(pos3)(rot4)(sc
    AxisXX->SetVerticesv(vx, 4); AxisXX->SetMaterial(GetColorMat(360*0.0/8.0, 1.0, 1.0 ));  
    AxisYY->SetVerticesv(vy, 4); AxisYY->SetMaterial(GetColorMat(360*2.0/8.0, 1.0, 1.0 ));
    AxisZZ->SetVerticesv(vz, 4); AxisZZ->SetMaterial(GetColorMat(360*4.0/8.0, 1.0, 1.0 ));
-  
+   
+   Material *MatArray[7];
   
    for( i = 0; i <  element_num; i++ )
    {
@@ -139,9 +140,10 @@ bunny.stl, 50.0, 1.0, 1.0, 10, 0, 0, 0, 0, 0,  0,  3,#OBJ(color3)(pos3)(rot4)(sc
 	      StlTrans[i].SetValue(ROTATION    , rot_angle, rot_x,  rot_y, rot_z, 0);
 	   StlTrans[i].SetValue(SCALE       , obj_scale, obj_scale, obj_scale,2); 
 	   
+	   MatArray[i] = GetColorMat(mat_h, mat_s, mat_v );
 	   StlElements[i].SetTransform(&StlTrans[i]);
        StlElements[i].LoadStl((char*)trim(fname).c_str());
-       StlElements[i].SetMaterial(GetColorMat(mat_h, mat_s, mat_v ));  //GetColorMat(360*0.0/8.0, 1.0, 1.0 ));//
+       StlElements[i].SetMaterial( MatArray[i] );  //GetColorMat(360*0.0/8.0, 1.0, 1.0 ));//
        
 	   //SysTrans->AddChild(&StlElements[i]);
 	   printf( "%s\n", trim(lines[i]).c_str() );
@@ -156,6 +158,17 @@ bunny.stl, 50.0, 1.0, 1.0, 10, 0, 0, 0, 0, 0,  0,  3,#OBJ(color3)(pos3)(rot4)(sc
   Light1->AddChild(AxisZZ);
   
   Node *Root=new Node;
+  
+  Root->node_func_buffer[0] =  MatArray[0];
+  Root->node_func_buffer[1] =  MatArray[1];
+  Root->node_func_buffer[2] =  MatArray[2];
+  Root->node_func_buffer[3] =  MatArray[3];
+  Root->node_func_buffer[4] =  MatArray[4];
+  Root->node_func_buffer[5] =  MatArray[5];
+  Root->node_func_buffer[6] =  MatArray[6];
+  
+  
+  
   
   Root->AddChild(SysTrans);
   SysTrans->AddChild(Light1);

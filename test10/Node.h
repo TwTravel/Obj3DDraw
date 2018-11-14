@@ -34,6 +34,7 @@ class Node
   string nodename;
   string nodespace;
   
+   Node* node_func_buffer[20];
  protected:
   void GetColor(Enum, float *);
   bool KeepMatrix; 

@@ -33,8 +33,17 @@ bunny.stl, 40.0, 1.0, 1.0, -10, 0, 0, 0, 0, 0, 0, 2,#OBJ(color3)(pos3)(rot4)(sca
 bunny.stl, 50.0, 1.0, 1.0, 10, 0, 0, 0, 0, 0,  0,  3,#OBJ(color3)(pos3)(rot4)(scale1)   
   */
   
+    float vx[][3]={{0,  -0.02, 0.0},{100, -0.02, 0.0},
+		         {100, 0.02, 0.0},{  0,  0.02, 0.0} };
+
+    float vy[][3]={{-0.02,  0, 0.0},{ -0.02, 100, 0.0},
+		         {0.02 ,100, 0.0},{  0.02,   0, 0.0} };		
+		
+    float vz[][3]={{-0.02,  0, 0.0},{ -0.02,  0, 100.0},
+		         {0.02 ,0, 100.0},{  0.02,   0, 0.0} };	
+  
    int i;
-   double  camx, camy, camz, campov;
+   double  camx, camy, camz, campov, lookatx, lookaty, lookatz;
    double  rot_angle,rot_x,rot_y,rot_z;
    double  trans_x,trans_y,trans_z;
    
@@ -49,10 +58,14 @@ bunny.stl, 50.0, 1.0, 1.0, 10, 0, 0, 0, 0, 0,  0,  3,#OBJ(color3)(pos3)(rot4)(sc
    camz   = atof( trim(strvec[3]).c_str() );
    campov = atof( trim(strvec[4]).c_str() );  
    
+   lookatx = atof( trim(strvec[5]).c_str() );  
+   lookaty = atof( trim(strvec[6]).c_str() ); 
+   lookatz = atof( trim(strvec[7]).c_str() ); 
+   
    Camera *Camera1=new Camera(PERSPECTIVE);
    
    Camera1->SetValue(POSITION, camx, camy, camz);
-   Camera1->SetValue(AIMAT, 0, 0, 0);
+   Camera1->SetValue(AIMAT,  lookatx, lookaty, lookatz);
    Camera1->SetValue(UPDIRECTION, 0, 1, 0);
    Camera1->SetValue(ASPECT, 1);
    Camera1->SetValue(NEAR, 0.1);
@@ -63,10 +76,10 @@ bunny.stl, 50.0, 1.0, 1.0, 10, 0, 0, 0, 0, 0,  0,  3,#OBJ(color3)(pos3)(rot4)(sc
 //##################################################################
 //##################################################################  
    strvec.clear(); splitString(lines[1], strvec, ","); 
-   rot_angle   = atof( trim(strvec[0]).c_str() );
-   rot_x       = atof( trim(strvec[1]).c_str() );
-   rot_y       = atof( trim(strvec[2]).c_str() );
-   rot_z       = atof( trim(strvec[3]).c_str() ); 
+   rot_angle   = atof( trim(strvec[1]).c_str() );
+   rot_x       = atof( trim(strvec[2]).c_str() );
+   rot_y       = atof( trim(strvec[3]).c_str() );
+   rot_z       = atof( trim(strvec[4]).c_str() ); 
    strvec.clear(); splitString(lines[2], strvec, ","); 
    trans_x = atof( trim(strvec[1]).c_str() );
    trans_y = atof( trim(strvec[2]).c_str() );
@@ -81,7 +94,22 @@ bunny.stl, 50.0, 1.0, 1.0, 10, 0, 0, 0, 0, 0,  0,  3,#OBJ(color3)(pos3)(rot4)(sc
    int element_num = lines.size() - 3 ;
    StlShape       *StlElements = new StlShape[ element_num ];
    Transformation *StlTrans    = new Transformation[ element_num ];
+   Light *Light1=new Light;
+   Light1->SetValue(POSITION,  2, -1,  1.8, 1);
+   Light1->SetValue(SPOT_DIRECTION, -2, 1, -1.8);
+   Light1->SetValue(CUTOFFANGLE, 180.0);
+   Light1->TurnOn();     Light1->nodename="Light1";
+  
+   Polygon  *AxisXX = new Polygon; AxisXX ->nodename= "AxisXX";
+   Polygon  *AxisYY = new Polygon; AxisYY ->nodename= "AxisYY";
+   Polygon  *AxisZZ = new Polygon; AxisZZ ->nodename= "AxisZZ";
+  
+   AxisXX->SetVerticesv(vx, 4); AxisXX->SetMaterial(GetColorMat(360*0.0/8.0, 1.0, 1.0 ));  
+   AxisYY->SetVerticesv(vy, 4); AxisYY->SetMaterial(GetColorMat(360*2.0/8.0, 1.0, 1.0 ));
+   AxisZZ->SetVerticesv(vz, 4); AxisZZ->SetMaterial(GetColorMat(360*4.0/8.0, 1.0, 1.0 ));
    
+   Material *MatArray[7];
+  
    for( i = 0; i <  element_num; i++ )
    {
 	   strvec.clear(); splitString(lines[3+i], strvec, ",");
@@ -105,22 +133,38 @@ bunny.stl, 50.0, 1.0, 1.0, 10, 0, 0, 0, 0, 0,  0,  3,#OBJ(color3)(pos3)(rot4)(sc
 	   rot_z     =  atof(trim(strvec[10]).c_str());
 	   obj_scale =  atof(trim(strvec[11]).c_str()); 
 	   
-	   StlTrans[i].SetValue(ROTATION    , rot_angle, rot_x,  rot_y, rot_z, 0);
+	   printf("##########################trans: %.2f,  %.2f,  %.2f\n", obj_x ,    obj_y,  obj_z);
+
 	   StlTrans[i].SetValue(TRANSLATION , obj_x ,    obj_y,  obj_z  , 1);
+	   if(rot_angle!=0)
+	      StlTrans[i].SetValue(ROTATION    , rot_angle, rot_x,  rot_y, rot_z, 0);
 	   StlTrans[i].SetValue(SCALE       , obj_scale, obj_scale, obj_scale,2); 
 	   
+	   MatArray[i] = GetColorMat(mat_h, mat_s, mat_v );
 	   StlElements[i].SetTransform(&StlTrans[i]);
        StlElements[i].LoadStl((char*)trim(fname).c_str());
-       StlElements[i].SetMaterial(GetColorMat(360*7.0/8.0, 1.0, 1.0 ));
+       StlElements[i].SetMaterial( MatArray[i] );  //GetColorMat(360*0.0/8.0, 1.0, 1.0 ));//
        
-	   SysTrans->AddChild(&StlElements[i]);
+	   //SysTrans->AddChild(&StlElements[i]);
 	   printf( "%s\n", trim(lines[i]).c_str() );
    }
   
+  SysTrans->AddChild(&StlElements[0]);
+  for( i = 0; i <  (element_num-1); i++ )
+	  StlElements[i].AddChild(&StlElements[i+1]);
+  
+  Light1->AddChild(AxisXX);
+  Light1->AddChild(AxisYY);
+  Light1->AddChild(AxisZZ);
   
   Node *Root=new Node;
+  
   Root->AddChild(SysTrans);
-  Root->AddChild(Camera1);  Root ->nodename="root node";
+  SysTrans->AddChild(Light1);
+  
+  //Root->AddChild(Light1);
+  //Light1->AddChild(SysTrans);
+  Root->AddChild(Camera1); Root ->nodename="root node";
   
   //Viewer:
   GLViewer *MyViewer=new GLViewer;
@@ -129,8 +173,21 @@ bunny.stl, 50.0, 1.0, 1.0, 10, 0, 0, 0, 0, 0,  0,  3,#OBJ(color3)(pos3)(rot4)(sc
   MyViewer->SetValue(BACKCOLOR, GREY);
   MyViewer->SetValue(BUFFER, DOUBLE);
   MyViewer->CreateWin("Working Hard", 800, 800);
-
+  
+  MyViewer->trans1 = &StlTrans[1];
+  MyViewer->trans2 = &StlTrans[2];
+  MyViewer->trans3 = &StlTrans[3];
+  MyViewer->trans4 = &StlTrans[4];
+  MyViewer->trans5 = &StlTrans[5];
+  
   MyViewer->Show(Root);
-   
+  
+  for( i=0;i<500;i++)
+  {
+	  StlTrans[0].Transform[0][0] = int(StlTrans[0].Transform[0][0] + 1)%360;
+	  glutPostRedisplay();
+	  //MyViewer->Show(Root);
+  }
+  
   return 1;
 }

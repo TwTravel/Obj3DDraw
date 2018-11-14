@@ -167,13 +167,13 @@ GLViewer::Display0()
   trans4->Transform[0][0] = int(trans4->Transform[0][0] + 1)%360;
   trans5->Transform[0][0] = int(trans5->Transform[0][0] + 1)%360;
   
-  ((Material*)(Root[0]->node_func_buffer[0]))->Add();
-  ((Material*)(Root[0]->node_func_buffer[1]))->Add();
-  ((Material*)(Root[0]->node_func_buffer[2]))->Add();
-  ((Material*)(Root[0]->node_func_buffer[3]))->Add();
-  ((Material*)(Root[0]->node_func_buffer[4]))->Add();
-  ((Material*)(Root[0]->node_func_buffer[5]))->Add(); 
-  ((Material*)(Root[0]->node_func_buffer[6]))->Add();
+  (Material*(Root[0]->node_func_buffer[0]))->Add();
+  (Material*(Root[0]->node_func_buffer[1]))->Add();
+  (Material*(Root[0]->node_func_buffer[2]))->Add();
+  (Material*(Root[0]->node_func_buffer[3]))->Add();
+  (Material*(Root[0]->node_func_buffer[4]))->Add();
+  (Material*(Root[0]->node_func_buffer[5]))->Add(); 
+  (Material*(Root[0]->node_func_buffer[6]))->Add();
 }
 
 

@@ -91,9 +91,9 @@ bunny.stl, 50.0, 1.0, 1.0, 10, 0, 0, 0, 0, 0,  0,  3,#OBJ(color3)(pos3)(rot4)(sc
    StlShape       *StlElements = new StlShape[ element_num ];
    Transformation *StlTrans    = new Transformation[ element_num ];
    Light *Light1=new Light;
-   Light1->SetValue(POSITION, -2, -3, 1.5, 1);
-   Light1->SetValue(SPOT_DIRECTION, 2, 3, -1.5);
-   Light1->SetValue(CUTOFFANGLE, 40.0);
+   Light1->SetValue(POSITION,  2, -1,  1.8, 1);
+   Light1->SetValue(SPOT_DIRECTION, -2, 1, -1.8);
+   Light1->SetValue(CUTOFFANGLE, 180.0);
    Light1->TurnOn();     Light1->nodename="Light1";
   
    Polygon  *AxisXX = new Polygon; AxisXX ->nodename= "AxisXX";
@@ -141,14 +141,18 @@ bunny.stl, 50.0, 1.0, 1.0, 10, 0, 0, 0, 0, 0,  0,  3,#OBJ(color3)(pos3)(rot4)(sc
 	   printf( "%s\n", trim(lines[i]).c_str() );
    }
   
-  SysTrans->AddChild(AxisXX);
-  SysTrans->AddChild(AxisYY);
-  SysTrans->AddChild(AxisZZ);
+  Light1->AddChild(AxisXX);
+  Light1->AddChild(AxisYY);
+  Light1->AddChild(AxisZZ);
   
   Node *Root=new Node;
-  Root->AddChild(Light1);
-  Light1->AddChild(SysTrans);
-  Root->AddChild(Camera1);  Root ->nodename="root node";
+  
+  Root->AddChild(SysTrans);
+  SysTrans->AddChild(Light1);
+  
+  //Root->AddChild(Light1);
+  //Light1->AddChild(SysTrans);
+  Root->AddChild(Camera1); Root ->nodename="root node";
   
   //Viewer:
   GLViewer *MyViewer=new GLViewer;

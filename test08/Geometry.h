@@ -663,7 +663,7 @@ public:
     vec3d point[3];
 };
  */
-  glScalef(4, 4, 4);
+  //glScalef(4, 4, 4);
   glBegin(GL_TRIANGLES);
   for(int i = 0; i < facet.size(); i++)
   {

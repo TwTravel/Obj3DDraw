@@ -3,6 +3,7 @@
 #define GLVIEWER_H
 
 #include "Node.h"
+#include "Transformation.h"
 
 class GLViewer
 {
@@ -16,13 +17,20 @@ class GLViewer
   void SetValue(Enum PName, Enum Type);
   void Init(int argc, char **argv);
   void Show(Node *N);
-
- private:
+  void Show(Node *N, Transformation*tr);
+  
+  static Transformation * trans1; 
+  static Transformation * trans2; 
+  static Transformation * trans3; 
+  static Transformation * trans4; 
+  static Transformation * trans5; 
+  
+ //private:
   void GLInit();
   int ViewerIndex;
   char *WinName;
+  
   float BackColor[3];
-
   static Node *Root[3];
   static int ViewerNum;
   static int BufType[3];
@@ -95,6 +103,16 @@ GLViewer::SetValue(Enum PName, Enum Type)
 }
 
 void
+GLViewer::Show(Node *N, Transformation*tr)
+{
+  GLInit();
+  //trans = tr;
+  Root[ViewerIndex]=N;
+  //if(ViewerIndex==(ViewerNum-1))
+    glutMainLoop();
+}
+
+void
 GLViewer::Show(Node *N)
 {
   GLInit();
@@ -130,16 +148,25 @@ GLViewer::GLInit()
 
   glEnable(GL_DEPTH_TEST);
   glClearColor(BackColor[0], BackColor[1], BackColor[2], 1.0);
+  glutIdleFunc(Display0);
 }
 
 void
 GLViewer::Display0()
-{printf("=============================================\n");
+{
+  printf("=============================================\n");
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
   Root[0]->Traverse();
   if(BufType[0]==GLUT_DOUBLE)
     glutSwapBuffers();
-  glFlush();
+  glFlush(); 
+  
+  trans1->Transform[0][0] = int(trans1->Transform[0][0] + 1)%360;
+  trans2->Transform[0][0] = int(trans2->Transform[0][0] + 1)%360;
+  trans3->Transform[0][0] = int(trans3->Transform[0][0] + 1)%360;
+  trans4->Transform[0][0] = int(trans4->Transform[0][0] + 1)%360;
+  trans5->Transform[0][0] = int(trans5->Transform[0][0] + 1)%360;
+
 }
 
 
@@ -159,6 +186,7 @@ GLViewer::Display1()
   if(BufType[1]==GLUT_DOUBLE)
     glutSwapBuffers();
   glFlush();
+  
 }
 
 void

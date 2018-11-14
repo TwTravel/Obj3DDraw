@@ -1,4 +1,4 @@
- CAMERA_POS, 4, 0.6, 1.6, 40 , 0,0.6,0,#posx posy posz angle
+ CAMERA_POS, 5, 0.6, 1.6, 40 , 0,0.6,0,#posx posy posz angle
 SYSROTATION, -75,  1, 0 ,0, 0
 SYSTRANSLTN, -0.5, 0, 0, 2, 0
 base.stl    ,  10.0, 1.0, 1.0,  0 , 0        ,0.235   ,  0,  0, 0, 0, 1 , #OBJ(color3)(pos3)(rot4)(scale1) 

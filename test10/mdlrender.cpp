@@ -171,8 +171,21 @@ bunny.stl, 50.0, 1.0, 1.0, 10, 0, 0, 0, 0, 0,  0,  3,#OBJ(color3)(pos3)(rot4)(sc
   MyViewer->SetValue(BACKCOLOR, GREY);
   MyViewer->SetValue(BUFFER, DOUBLE);
   MyViewer->CreateWin("Working Hard", 800, 800);
-
+  
+  MyViewer->trans1 = &StlTrans[1];
+  MyViewer->trans2 = &StlTrans[2];
+  MyViewer->trans3 = &StlTrans[3];
+  MyViewer->trans4 = &StlTrans[4];
+  MyViewer->trans5 = &StlTrans[5];
+  
   MyViewer->Show(Root);
-   
+  
+  for( i=0;i<500;i++)
+  {
+	  StlTrans[0].Transform[0][0] = int(StlTrans[0].Transform[0][0] + 1)%360;
+	  glutPostRedisplay();
+	  //MyViewer->Show(Root);
+  }
+  
   return 1;
 }

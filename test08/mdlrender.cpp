@@ -33,6 +33,15 @@ bunny.stl, 40.0, 1.0, 1.0, -10, 0, 0, 0, 0, 0, 0, 2,#OBJ(color3)(pos3)(rot4)(sca
 bunny.stl, 50.0, 1.0, 1.0, 10, 0, 0, 0, 0, 0,  0,  3,#OBJ(color3)(pos3)(rot4)(scale1)   
   */
   
+    float vx[][3]={{0,  -0.02, 0.0},{100, -0.02, 0.0},
+		         {100, 0.02, 0.0},{  0,  0.02, 0.0} };
+
+    float vy[][3]={{-0.02,  0, 0.0},{ -0.02, 100, 0.0},
+		         {0.02 ,100, 0.0},{  0.02,   0, 0.0} };		
+		
+    float vz[][3]={{-0.02,  0, 0.0},{ -0.02,  0, 100.0},
+		         {0.02 ,0, 100.0},{  0.02,   0, 0.0} };	
+  
    int i;
    double  camx, camy, camz, campov;
    double  rot_angle,rot_x,rot_y,rot_z;
@@ -87,6 +96,15 @@ bunny.stl, 50.0, 1.0, 1.0, 10, 0, 0, 0, 0, 0,  0,  3,#OBJ(color3)(pos3)(rot4)(sc
    Light1->SetValue(CUTOFFANGLE, 40.0);
    Light1->TurnOn();     Light1->nodename="Light1";
   
+   Polygon  *AxisXX = new Polygon; AxisXX ->nodename= "AxisXX";
+   Polygon  *AxisYY = new Polygon; AxisYY ->nodename= "AxisYY";
+   Polygon  *AxisZZ = new Polygon; AxisZZ ->nodename= "AxisZZ";
+  
+   AxisXX->SetVerticesv(vx, 4); AxisXX->SetMaterial(GetColorMat(360*0.0/8.0, 1.0, 1.0 ));  
+   AxisYY->SetVerticesv(vy, 4); AxisYY->SetMaterial(GetColorMat(360*2.0/8.0, 1.0, 1.0 ));
+   AxisZZ->SetVerticesv(vz, 4); AxisZZ->SetMaterial(GetColorMat(360*4.0/8.0, 1.0, 1.0 ));
+  
+  
    for( i = 0; i <  element_num; i++ )
    {
 	   strvec.clear(); splitString(lines[3+i], strvec, ",");
@@ -110,20 +128,22 @@ bunny.stl, 50.0, 1.0, 1.0, 10, 0, 0, 0, 0, 0,  0,  3,#OBJ(color3)(pos3)(rot4)(sc
 	   rot_z     =  atof(trim(strvec[10]).c_str());
 	   obj_scale =  atof(trim(strvec[11]).c_str()); 
 	   
-	   StlTrans[i].SetValue(ROTATION    , rot_angle, rot_x,  rot_y, rot_z, 0);
+	   printf("##########################trans: %.2f,  %.2f,  %.2f\n", obj_x ,    obj_y,  obj_z);
+	   //StlTrans[i].SetValue(ROTATION    , rot_angle, rot_x,  rot_y, rot_z, 0);
 	   StlTrans[i].SetValue(TRANSLATION , obj_x ,    obj_y,  obj_z  , 1);
 	   StlTrans[i].SetValue(SCALE       , obj_scale, obj_scale, obj_scale,2); 
 	   
 	   StlElements[i].SetTransform(&StlTrans[i]);
        StlElements[i].LoadStl((char*)trim(fname).c_str());
-       StlElements[i].SetMaterial(GetColorMat(360*0.0/8.0, 1.0, 1.0 ));//GetColorMat(mat_h, mat_s, mat_v ));
+       StlElements[i].SetMaterial(GetColorMat(mat_h, mat_s, mat_v ));  //GetColorMat(360*0.0/8.0, 1.0, 1.0 ));//
        
 	   SysTrans->AddChild(&StlElements[i]);
 	   printf( "%s\n", trim(lines[i]).c_str() );
    }
   
-  
-  
+  SysTrans->AddChild(AxisXX);
+  SysTrans->AddChild(AxisYY);
+  SysTrans->AddChild(AxisZZ);
   
   Node *Root=new Node;
   Root->AddChild(Light1);

@@ -1,0 +1,121 @@
+
+<mujoco>
+    <equality>
+        <joint name="ur10:shoulder_pan_fix" active="false" joint1="ur10:shoulder_pan" class="ur10:equality_constraint"/>
+        <joint name="ur10:shoulder_lift_fix" active="false" joint1="ur10:shoulder_lift" class="ur10:equality_constraint"/>
+        <joint name="ur10:elbow_fix" active="false" joint1="ur10:elbow" class="ur10:equality_constraint"/>
+        <joint name="ur10:wrist_1_fix" active="false" joint1="ur10:wrist_1" class="ur10:equality_constraint"/>
+        <joint name="ur10:wrist_2_fix" active="false" joint1="ur10:wrist_2" class="ur10:equality_constraint"/>
+        <joint name="ur10:wrist_3_fix" active="false" joint1="ur10:wrist_3" class="ur10:equality_constraint"/>
+
+        <joint name="shadow:WRJ1_fix" active="false" joint1="shadow:WRJ1" class="shadow:equality_constraint"/>
+        <joint name="shadow:WRJ0_fix" active="false" joint1="shadow:WRJ0" class="shadow:equality_constraint"/>
+        <joint name="shadow:FFJ3_fix" active="false" joint1="shadow:FFJ3" class="shadow:equality_constraint"/>
+        <joint name="shadow:FFJ2_fix" active="false" joint1="shadow:FFJ2" class="shadow:equality_constraint"/>
+        <joint name="shadow:FFJ1_fix" active="false" joint1="shadow:FFJ1" class="shadow:equality_constraint"/>
+        <joint name="shadow:MFJ3_fix" active="false" joint1="shadow:MFJ3" class="shadow:equality_constraint"/>
+        <joint name="shadow:MFJ2_fix" active="false" joint1="shadow:MFJ2" class="shadow:equality_constraint"/>
+        <joint name="shadow:MFJ1_fix" active="false" joint1="shadow:MFJ1" class="shadow:equality_constraint"/>
+        <joint name="shadow:RFJ3_fix" active="false" joint1="shadow:RFJ3" class="shadow:equality_constraint"/>
+        <joint name="shadow:RFJ2_fix" active="false" joint1="shadow:RFJ2" class="shadow:equality_constraint"/>
+        <joint name="shadow:RFJ1_fix" active="false" joint1="shadow:RFJ1" class="shadow:equality_constraint"/>
+        <joint name="shadow:LFJ4_fix" active="false" joint1="shadow:LFJ4" class="shadow:equality_constraint"/>
+        <joint name="shadow:LFJ3_fix" active="false" joint1="shadow:LFJ3" class="shadow:equality_constraint"/>
+        <joint name="shadow:LFJ2_fix" active="false" joint1="shadow:LFJ2" class="shadow:equality_constraint"/>
+        <joint name="shadow:LFJ1_fix" active="false" joint1="shadow:LFJ1" class="shadow:equality_constraint"/>
+        <joint name="shadow:THJ4_fix" active="false" joint1="shadow:THJ4" class="shadow:equality_constraint"/>
+        <joint name="shadow:THJ3_fix" active="false" joint1="shadow:THJ3" class="shadow:equality_constraint"/>
+        <joint name="shadow:THJ2_fix" active="false" joint1="shadow:THJ2" class="shadow:equality_constraint"/>
+        <joint name="shadow:THJ1_fix" active="false" joint1="shadow:THJ1" class="shadow:equality_constraint"/>
+        <joint name="shadow:THJ0_fix" active="false" joint1="shadow:THJ0" class="shadow:equality_constraint"/>
+    </equality>
+
+    <contact>
+        <pair geom1="shadow:C_ffdistal" geom2="shadow:C_thdistal" condim="1"></pair>
+        <pair geom1="shadow:C_ffmiddle" geom2="shadow:C_thdistal" condim="1"></pair>
+        <pair geom1="shadow:C_ffproximal" geom2="shadow:C_thdistal" condim="1"></pair>
+        <pair geom1="shadow:C_mfproximal" geom2="shadow:C_thdistal" condim="1"></pair>
+        <pair geom1="shadow:C_mfdistal" geom2="shadow:C_thdistal" condim="1"></pair>
+        <pair geom1="shadow:C_rfdistal" geom2="shadow:C_thdistal" condim="1"></pair>
+        <pair geom1="shadow:C_lfdistal" geom2="shadow:C_thdistal" condim="1"></pair>
+        <pair geom1="shadow:C_palm0" geom2="shadow:C_thdistal" condim="1"></pair>
+        <pair geom1="shadow:C_mfdistal" geom2="shadow:C_ffdistal" condim="1"></pair>
+        <pair geom1="shadow:C_rfdistal" geom2="shadow:C_mfdistal" condim="1"></pair>
+        <pair geom1="shadow:C_lfdistal" geom2="shadow:C_rfdistal" condim="1"></pair>
+        <pair geom1="shadow:C_mfproximal" geom2="shadow:C_ffproximal" condim="1"></pair>
+        <pair geom1="shadow:C_rfproximal" geom2="shadow:C_mfproximal" condim="1"></pair>
+        <pair geom1="shadow:C_lfproximal" geom2="shadow:C_rfproximal" condim="1"></pair>
+        <pair geom1="shadow:C_lfdistal" geom2="shadow:C_rfdistal" condim="1"></pair>
+        <pair geom1="shadow:C_lfdistal" geom2="shadow:C_mfdistal" condim="1"></pair>
+        <pair geom1="shadow:C_lfdistal" geom2="shadow:C_rfmiddle" condim="1"></pair>
+        <pair geom1="shadow:C_lfmiddle" geom2="shadow:C_rfdistal" condim="1"></pair>
+        <pair geom1="shadow:C_lfmiddle" geom2="shadow:C_rfmiddle" condim="1"></pair>
+    </contact>
+
+
+    <tendon>
+        <fixed name="shadow:T_FFJ1c" limited="true" range="-0.001 0.001">
+            <joint joint="shadow:FFJ0" coef="0.00705"></joint>
+            <joint joint="shadow:FFJ1" coef="-0.00805"></joint>
+        </fixed>
+        <fixed name="shadow:T_MFJ1c" limited="true" range="-0.001 0.001">
+            <joint joint="shadow:MFJ0" coef="0.00705"></joint>
+            <joint joint="shadow:MFJ1" coef="-0.00805"></joint>
+        </fixed>
+        <fixed name="shadow:T_RFJ1c" limited="true" range="-0.001 0.001">
+            <joint joint="shadow:RFJ0" coef="0.00705"></joint>
+            <joint joint="shadow:RFJ1" coef="-0.00805"></joint>
+        </fixed>
+        <fixed name="shadow:T_LFJ1c" limited="true" range="-0.001 0.001">
+            <joint joint="shadow:LFJ0" coef="0.00705"></joint>
+            <joint joint="shadow:LFJ1" coef="-0.00805"></joint>
+        </fixed>
+    </tendon>
+
+    <sensor>
+        <touch name="shadow:ST_Tch_fftip" site="shadow:Tch_fftip"></touch>
+        <touch name="shadow:ST_Tch_mftip" site="shadow:Tch_mftip"></touch>
+        <touch name="shadow:ST_Tch_rftip" site="shadow:Tch_rftip"></touch>
+        <touch name="shadow:ST_Tch_lftip" site="shadow:Tch_lftip"></touch>
+        <touch name="shadow:ST_Tch_thtip" site="shadow:Tch_thtip"></touch>
+    </sensor>
+
+
+    <actuator>
+        <position name='ur10:A_shoulder_pan' ctrllimited="true" ctrlrange="-3.14159 3.14159" joint='ur10:shoulder_pan' kp="5000"/>
+        <position name='ur10:A_shoulder_lift' ctrllimited="true" ctrlrange="-3.14159 3.14159" joint='ur10:shoulder_lift' kp="5000"/>
+        <position name='ur10:A_elbow' ctrllimited="true" ctrlrange="-3.14159 3.14159" joint='ur10:elbow' kp="5000"/>
+        <position name='ur10:A_wrist_1' ctrllimited="true" ctrlrange="-3.14159 3.14159" joint='ur10:wrist_1' kp="1000"/>
+        <position name='ur10:A_wrist_2' ctrllimited="true" ctrlrange="-3.14159 3.14159" joint='ur10:wrist_2' kp="1000"/>
+        <position name='ur10:A_wrist_3' ctrllimited="true" ctrlrange="-3.14159 3.14159" joint='ur10:wrist_3' kp="1000"/>
+
+        <!-- 7: -->
+        <position name="shadow:A_WRJ1" class="shadow:asset_class" joint="shadow:WRJ1" ctrlrange="-0.489 0.14" kp="5" forcerange="-4.785 4.785"></position>
+        <position name="shadow:A_WRJ0" class="shadow:asset_class" joint="shadow:WRJ0" ctrlrange="-0.698 0.489" kp="5" forcerange="-2.175 2.175"></position>
+        <!-- 9: -->
+        <position name="shadow:A_FFJ3" class="shadow:asset_class" joint="shadow:FFJ3" ctrlrange="-0.349 0.349" kp="1" forcerange="-0.9 0.9"></position>
+        <position name="shadow:A_FFJ2" class="shadow:asset_class" joint="shadow:FFJ2" ctrlrange="0 1.571" kp="1" forcerange="-0.9 0.9"></position>
+        <position name="shadow:A_FFJ1" class="shadow:asset_class" joint="shadow:FFJ1" ctrlrange="0 1.571" kp="1" forcerange="-0.7245 0.7245"></position>
+        <!-- 12: -->
+        <position name="shadow:A_MFJ3" class="shadow:asset_class" joint="shadow:MFJ3" ctrlrange="-0.349 0.349" kp="1" forcerange="-0.9 0.9"></position>
+        <position name="shadow:A_MFJ2" class="shadow:asset_class" joint="shadow:MFJ2" ctrlrange="0 1.571" kp="1" forcerange="-0.9 0.9"></position>
+        <position name="shadow:A_MFJ1" class="shadow:asset_class" joint="shadow:MFJ1" ctrlrange="0 1.571" kp="1" forcerange="-0.7245 0.7245"></position>
+        <!-- 15: -->
+        <position name="shadow:A_RFJ3" class="shadow:asset_class" joint="shadow:RFJ3" ctrlrange="-0.349 0.349" kp="1" forcerange="-0.9 0.9"></position>
+        <position name="shadow:A_RFJ2" class="shadow:asset_class" joint="shadow:RFJ2" ctrlrange="0 1.571" kp="1" forcerange="-0.9 0.9"></position>
+        <position name="shadow:A_RFJ1" class="shadow:asset_class" joint="shadow:RFJ1" ctrlrange="0 1.571" kp="1" forcerange="-0.7245 0.7245"></position>
+        <!-- 18: -->
+        <position name="shadow:A_LFJ4" class="shadow:asset_class" joint="shadow:LFJ4" ctrlrange="0 0.785" kp="1" forcerange="-0.9 0.9"></position>
+        <position name="shadow:A_LFJ3" class="shadow:asset_class" joint="shadow:LFJ3" ctrlrange="-0.349 0.349" kp="1" forcerange="-0.9 0.9"></position>
+        <position name="shadow:A_LFJ2" class="shadow:asset_class" joint="shadow:LFJ2" ctrlrange="0 1.571" kp="1" forcerange="-0.9 0.9"></position>
+        <position name="shadow:A_LFJ1" class="shadow:asset_class" joint="shadow:LFJ1" ctrlrange="0 1.571" kp="1" forcerange="-0.7245 0.7245"></position>
+        <!-- 22: -->
+        <position name="shadow:A_THJ4" class="shadow:asset_class" joint="shadow:THJ4" ctrlrange="-1.047 1.047" kp="1" forcerange="-2.3722 2.3722"></position>
+        <position name="shadow:A_THJ3" class="shadow:asset_class" joint="shadow:THJ3" ctrlrange="0 1.222" kp="1" forcerange="-1.45 1.45"></position>
+        <position name="shadow:A_THJ2" class="shadow:asset_class" joint="shadow:THJ2" ctrlrange="-0.209 0.209" kp="1" forcerange="-0.99 0.99"></position>
+        <position name="shadow:A_THJ1" class="shadow:asset_class" joint="shadow:THJ1" ctrlrange="-0.524 0.524" kp="1" forcerange="-0.99 0.99"></position>
+        <position name="shadow:A_THJ0" class="shadow:asset_class" joint="shadow:THJ0" ctrlrange="-1.571 0" kp="1" forcerange="-0.81 0.81"></position>
+
+    </actuator>
+
+</mujoco>

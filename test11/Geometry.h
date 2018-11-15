@@ -700,11 +700,12 @@ public:
 class TextureSurface: public Geometry
 {
  public:
-  TextureSurface(){};
+  TextureSurface(){Pic.Load("timg.bmp");};
   void SetVerticesv(float v[][3], int);
   void Render();
 
  private:
+  C24BitMap Pic;
   float Vertices[1000][3];
   int Size;
 };
@@ -742,7 +743,7 @@ TextureSurface::Render()
   printf("%s name draw GL_POLYGONs:%s\n",(char*)nodespace.c_str(),(char*)nodename.c_str());
   
   int texture[1];
-  C24BitMap Pic; Pic.Load("timg.bmp");
+   
   glGenTextures(1, (GLuint*)&texture[0]);
   glBindTexture(GL_TEXTURE_2D, texture[0]);   // 2d texture (x and y size)
 
@@ -751,7 +752,7 @@ TextureSurface::Render()
 
     // 2d texture, level of detail 0 (normal), 3 components (red, green, blue), x size from image, y size from image, 
     // border 0 (normal), rgb color data, unsigned byte data, and finally the data itself.
-  glTexImage2D(GL_TEXTURE_2D, 0, 3, Pic.Width, Pic.Height, 0, GL_RGB, GL_UNSIGNED_BYTE, Pic.Buffer);
+  glTexImage2D(GL_TEXTURE_2D, 0, 3, Pic.Width, Pic.Height, 0, GL_BGR, GL_UNSIGNED_BYTE, Pic.Buffer);
   glEnable(GL_TEXTURE_2D);
   glBegin(GL_POLYGON);
   

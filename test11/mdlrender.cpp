@@ -109,9 +109,15 @@ bunny.stl, 50.0, 1.0, 1.0, 10, 0, 0, 0, 0, 0,  0,  3,#OBJ(color3)(pos3)(rot4)(sc
    AxisZZ->SetVerticesv(vz, 4); AxisZZ->SetMaterial(GetColorMat(360*4.0/8.0, 1.0, 1.0 ));
    
    TextureSurface* groundface = new TextureSurface;
-   float vground[][3]={{-100,  -100, -8},{100, -100,  -8},
-		               {100, 100, -8},{ 100,  100,  -8} };
-   groundface->SetVerticesv(vground,4); groundface->SetMaterial(GetColorMat(360*7.0/8.0, 1.0, 1.0 ));
+   
+   float vground[][3]={{0,  -0.5, -0.8},{5,  -0.5,  -0.8},
+		               {5,  0.5, -0.8},{  0,  0.5,  -0.8} };
+				 
+  /* float vground[][3]={{-200,  200, 0.0},{-200, -200, 0.0},
+		               { 200,  -200, 0.0},{ 200, 200, 0.0} };*/
+   groundface->SetVerticesv(vground,4);
+   // groundface->SetVerticesv(vx, 4);
+   groundface->SetMaterial(GetColorMat(360*0.0/8.0, 1.0, 1.0 ));
    //=============================================================================
    Material *MatArray[7];
   

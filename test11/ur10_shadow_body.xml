@@ -1,0 +1,218 @@
+<mujoco>
+    <body name="bench" pos="0 0 0.435">
+        <geom size=".19 .29 .03" pos ="0 0 0.4" type="box" material="bench:mat"/>
+        <geom size=".19 .29 .03" pos ="0 0 -0.2" type="box" material="bench:mat"/>
+        <geom size=".04 .04 .435" pos =".16 .26 0" type="box" material="bench:mat"/>
+        <geom size=".04 .04 .435" pos ="-.16 .26 0" type="box" material="bench:mat"/>
+        <geom size=".04 .04 .435" pos =".16 -.26 0" type="box" material="bench:mat"/>
+        <geom size=".04 .04 .435" pos ="-.16 -.26 0" type="box" material="bench:mat"/>
+        <body name="ur10:base_link" pos="0 0 0.435" childclass="ur10:arm">
+            <geom type="mesh"  mesh="ur10:base"/>
+            <geom type="mesh"  mesh="ur10:base_v0" class="ur10:visual" rgba="0.371451 0.371451 0.371451 1"/>
+            <body name="ur10:shoulder_link" pos="0 0 0.1273">
+                <joint name="ur10:shoulder_pan" pos="0 0 0" axis="0 0 1" limited="true" range="-3.14159 3.14159" />
+                <geom type="mesh"  mesh="ur10:shoulder"/>
+                <geom type="mesh"  mesh="ur10:shoulder_v0" class="ur10:visual" rgba="0.2227451 0.2227451 0.2227451 1"/>
+                <geom type="mesh"  mesh="ur10:shoulder_v1" class="ur10:visual" rgba="0.3921569 0.5427451 0.64 1"/>
+                <geom type="mesh"  mesh="ur10:shoulder_v2" class="ur10:visual" rgba="0.4643137 0.4643137 0.4643137 1"/>
+                <body name="ur10:upper_arm_link" pos="0 0.220941 0">
+                    <joint name="ur10:shoulder_lift" pos="0 0 0" axis="0 1 0" limited="true" range="-3.14159 3.14159" />
+                    <geom type="mesh"  mesh="ur10:upperarm"/>
+                    <geom type="mesh"  mesh="ur10:upperarm_v0" class="ur10:visual" rgba="0.2227451 0.2227451 0.2227451 1"/>
+                    <geom type="mesh"  mesh="ur10:upperarm_v1" class="ur10:visual" rgba="0.3921569 0.5427451 0.64 1"/>
+                    <geom type="mesh"  mesh="ur10:upperarm_v2" class="ur10:visual" rgba="0.4643137 0.4643137 0.4643137 1"/>
+                    <geom type="mesh"  mesh="ur10:upperarm_v3" class="ur10:visual" rgba="0.6563138 0.6563138 0.6563138 1"/>
+                    <body name="ur10:forearm_link" pos="0 -0.1719 0.612">
+                        <joint name="ur10:elbow" pos="0 0 0" axis="0 1 0" limited="true" range="-3.14159 3.14159" />
+                        <geom type="mesh"  mesh="ur10:forearm"/>
+                        <geom type="mesh"  mesh="ur10:forearm_v0" class="ur10:visual" rgba="0.2227451 0.2227451 0.2227451 1"/>
+                        <geom type="mesh"  mesh="ur10:forearm_v1" class="ur10:visual" rgba="0.3921569 0.5427451 0.64 1"/>
+                        <geom type="mesh"  mesh="ur10:forearm_v2" class="ur10:visual" rgba="0.4643137 0.4643137 0.4643137 1"/>
+                        <geom type="mesh"  mesh="ur10:forearm_v3" class="ur10:visual" rgba="0.6563138 0.6563138 0.6563138 1"/>
+                        <geom type="mesh"  mesh="ur10:forearm_v4" class="ur10:visual" rgba="0.08031373 0.08031373 0.08031373 1"/>
+                        <body name="ur10:wrist_1_link" pos="0 0 0.5723" childclass="ur10:wrist">
+                            <joint name="ur10:wrist_1" pos="0 0 0" axis="0 1 0" limited="true" range="-3.14159 3.14159" />
+                            <geom type="mesh" mesh="ur10:wrist1"/>
+                            <geom type="mesh" mesh="ur10:wrist1_v0" class="ur10:visual" rgba="0.2227451 0.2227451 0.2227451 1"/>
+                            <geom type="mesh" mesh="ur10:wrist1_v1" class="ur10:visual" rgba="0.3921569 0.5427451 0.64 1"/>
+                            <geom type="mesh" mesh="ur10:wrist1_v2" class="ur10:visual" rgba="0.4643137 0.4643137 0.4643137 1"/>
+                            <body name="ur10:wrist_2_link" pos="0 0.1149 0">
+                                <joint name="ur10:wrist_2" pos="0 0 0" axis="0 0 1" limited="true" range="-3.14159 3.14159" />
+                                <geom type="mesh"  mesh="ur10:wrist2"/>
+                                <geom type="mesh"  mesh="ur10:wrist2_v0" class="ur10:visual" rgba="0.2227451 0.2227451 0.2227451 1"/>
+                                <geom type="mesh"  mesh="ur10:wrist2_v1" class="ur10:visual" rgba="0.3921569 0.5427451 0.64 1"/>
+                                <geom type="mesh"  mesh="ur10:wrist2_v2" class="ur10:visual" rgba="0.4643137 0.4643137 0.4643137 1"/>
+                                <body name="ur10:wrist_3_link" pos="0 0 0.1157">
+                                    <joint name="ur10:wrist_3" pos="0 0 0" axis="0 1 0" limited="true" range="-3.14159 3.14159" />
+                                    <geom type="mesh"  mesh="ur10:wrist3"/>
+                                    <geom type="mesh"  mesh="ur10:wrist3_v0" class="ur10:visual" rgba="0.4643137 0.4643137 0.4643137 1"/>
+                                    <body name="ur10:ee_link" pos="0 0.0922 0" quat="0.707107 -0.707107 0 0">
+                                    <!-- <body name="ur10:ee_link" pos="0 0.0823 0"> -->
+                                        <geom size="0.005 0.005 0.005" pos="-0.01 0 0" type="box" />
+
+                                        <body childclass="shadow:asset_class" name="shadow:forearm" pos="0 -0.01 -0.043" euler="0 0 0">
+                                            <inertial pos="0.001 -0.002 0.29" quat="0.982 -0.016 0 -0.188" mass="4" diaginertia="0.01 0.01 0.0075"></inertial>
+                                            <geom class="shadow:D_Vizual" pos="0 0.01 0.04" name="shadow:V_forearm" mesh="shadow:forearm" euler="0 0 1.57" rgba="0.5 0.5 0.5 1"></geom>
+                                            <geom class="shadow:DC_Hand" name="shadow:C_forearm" type="mesh" mesh="shadow:forearm_cvx" pos="0 0.01 0.04" euler="0 0 1.57" rgba="0.4 0.5 0.6 0.7"></geom>
+                                            <body name="shadow:wrist" pos="0 0 0.256">
+                                                <inertial pos="0.003 0 0.016" quat="0.504 0.496 0.495 0.504" mass="0.3" diaginertia="0.001 0.001 0.001"></inertial>
+                                                <joint name="shadow:WRJ1" type="hinge" pos="0 0 0" axis="0 1 0" range="-0.489 0.14" damping="0.5" armature="0.005"></joint>
+                                                <geom class="shadow:D_Vizual" name="shadow:V_wrist" mesh="shadow:wrist"></geom>
+                                                <geom class="shadow:DC_Hand" name="shadow:C_wrist" type="capsule" pos="0 0 0" quat="0.707 0.707 0 0" size="0.015 0.01" rgba="0.4 0.5 0.6 0.1"></geom>
+                                                <body name="shadow:palm" pos="0 0 0.034">
+                                                    <inertial pos="0.006 0 0.036" quat="0.716 0.044 0.075 0.693" mass="0.3" diaginertia="0.001 0.001 0.001"></inertial>
+                                                    <joint name="shadow:WRJ0" type="hinge" pos="0 0 0" axis="1 0 0" range="-0.698 0.489" damping="0.5" armature="0.005"></joint>
+                                                    <geom class="shadow:D_Vizual" name="shadow:V_palm" mesh="shadow:palm"></geom>
+                                                    <geom class="shadow:DC_Hand" name="shadow:C_palm0" type="box" pos="0.011 0 0.038" size="0.032 0.0111 0.049" rgba="0.4 0.5 0.6 0.1"></geom>
+                                                    <geom class="shadow:DC_Hand" name="shadow:C_palm1" type="box" pos="-0.032 0 0.014" size="0.011 0.0111 0.025" rgba="0.4 0.5 0.6 0.1"></geom>
+                                                    <body name="shadow:ffknuckle" pos="0.033 0 0.095">
+                                                        <inertial pos="0 0 0" quat="0.52 0.854 0.006 -0.003" mass="0.008" diaginertia="1e-05 1e-05 1e-05"></inertial>
+                                                        <joint name="shadow:FFJ3" type="hinge" pos="0 0 0" axis="0 1 0" range="-0.349 0.349"></joint>
+                                                        <geom class="shadow:D_Vizual" name="shadow:V_ffknuckle" mesh="shadow:knuckle"></geom>
+                                                        <body name="shadow:ffproximal" pos="0 0 0">
+                                                            <inertial pos="0 0 0.023" quat="0.707 -0.004 0.004 0.707" mass="0.014" diaginertia="1e-05 1e-05 1e-05"></inertial>
+                                                            <joint name="shadow:FFJ2" type="hinge" pos="0 0 0" axis="1 0 0" range="0 1.571"></joint>
+                                                            <geom class="shadow:D_Vizual" name="shadow:V_ffproximal" mesh="shadow:F3"></geom>
+                                                            <geom class="shadow:DC_Hand" name="shadow:C_ffproximal" type="capsule" pos="0 0 0.0225" size="0.01 0.0225"></geom>
+                                                            <body name="shadow:ffmiddle" pos="0 0 0.045">
+                                                                <inertial pos="0 0 0.011" quat="0.707 0 0 0.707" mass="0.012" diaginertia="1e-05 1e-05 1e-05"></inertial>
+                                                                <joint name="shadow:FFJ1" type="hinge" pos="0 0 0" axis="1 0 0" range="0 1.571"></joint>
+                                                                <geom class="shadow:D_Vizual" name="shadow:V_ffmiddle" mesh="shadow:F2"></geom>
+                                                                <geom class="shadow:DC_Hand" name="shadow:C_ffmiddle" type="capsule" pos="0 0 0.0125" size="0.00805 0.0125"></geom>
+                                                                <body name="shadow:ffdistal" pos="0 0 0.025">
+                                                                    <inertial pos="0 0 0.015" quat="0.707 -0.003 0.003 0.707" mass="0.01" diaginertia="1e-05 1e-05 1e-05"></inertial>
+                                                                    <joint name="shadow:FFJ0" type="hinge" pos="0 0 0" axis="1 0 0" range="0 1.571"></joint>
+                                                                    <geom class="shadow:D_Vizual" name="shadow:V_ffdistal" pos="0 0 0.001" mesh="shadow:F1"></geom>
+                                                                    <geom class="shadow:DC_Hand" name="shadow:C_ffdistal" type="capsule" pos="0 0 0.012" size="0.00705 0.012" condim="4"></geom>
+                                                                    <site name="shadow:S_fftip" pos="0 0 0.026" group="3"></site>
+                                                                    <site class="shadow:D_Touch" name="shadow:Tch_fftip"></site>
+                                                                </body>
+                                                            </body>
+                                                        </body>
+                                                    </body>
+                                                    <body name="shadow:mfknuckle" pos="0.011 0 0.099">
+                                                        <inertial pos="0 0 0" quat="0.52 0.854 0.006 -0.003" mass="0.008" diaginertia="1e-05 1e-05 1e-05"></inertial>
+                                                        <joint name="shadow:MFJ3" type="hinge" pos="0 0 0" axis="0 1 0" range="-0.349 0.349"></joint>
+                                                        <geom class="shadow:D_Vizual" name="shadow:V_mfknuckle" mesh="shadow:knuckle"></geom>
+                                                        <body name="shadow:mfproximal" pos="0 0 0">
+                                                            <inertial pos="0 0 0.023" quat="0.707 -0.004 0.004 0.707" mass="0.014" diaginertia="1e-05 1e-05 1e-05"></inertial>
+                                                            <joint name="shadow:MFJ2" type="hinge" pos="0 0 0" axis="1 0 0" range="0 1.571"></joint>
+                                                            <geom class="shadow:D_Vizual" name="shadow:V_mfproximal" mesh="shadow:F3"></geom>
+                                                            <geom class="shadow:DC_Hand" name="shadow:C_mfproximal" type="capsule" pos="0 0 0.0225" size="0.01 0.0225"></geom>
+                                                            <body name="shadow:mfmiddle" pos="0 0 0.045">
+                                                                <inertial pos="0 0 0.012" quat="0.707 0 0 0.707" mass="0.012" diaginertia="1e-05 1e-05 1e-05"></inertial>
+                                                                <joint name="shadow:MFJ1" type="hinge" pos="0 0 0" axis="1 0 0" range="0 1.571"></joint>
+                                                                <geom class="shadow:D_Vizual" name="shadow:V_mfmiddle" mesh="shadow:F2"></geom>
+                                                                <geom class="shadow:DC_Hand" name="shadow:C_mfmiddle" type="capsule" pos="0 0 0.0125" size="0.00805 0.0125"></geom>
+                                                                <body name="shadow:mfdistal" pos="0 0 0.025">
+                                                                    <inertial pos="0 0 0.015" quat="0.707 -0.003 0.003 0.707" mass="0.01" diaginertia="1e-05 1e-05 1e-05"></inertial>
+                                                                    <joint name="shadow:MFJ0" type="hinge" pos="0 0 0" axis="1 0 0" range="0 1.571"></joint>
+                                                                    <geom class="shadow:D_Vizual" name="shadow:V_mfdistal" mesh="shadow:F1"></geom>
+                                                                    <geom class="shadow:DC_Hand" name="shadow:C_mfdistal" type="capsule" pos="0 0 0.012" size="0.00705 0.012" condim="4"></geom>
+                                                                    <site name="shadow:S_mftip" pos="0 0 0.026" group="3"></site>
+                                                                    <site class="shadow:D_Touch" name="shadow:Tch_mftip"></site>
+                                                                </body>
+                                                            </body>
+                                                        </body>
+                                                    </body>
+                                                    <body name="shadow:rfknuckle" pos="-0.011 0 0.095">
+                                                        <inertial pos="0 0 0" quat="0.52 0.854 0.006 -0.003" mass="0.008" diaginertia="1e-05 1e-05 1e-05"></inertial>
+                                                        <joint name="shadow:RFJ3" type="hinge" pos="0 0 0" axis="0 1 0" range="-0.349 0.349"></joint>
+                                                        <geom class="shadow:D_Vizual" name="shadow:V_rfknuckle" mesh="shadow:knuckle"></geom>
+                                                        <body name="shadow:rfproximal" pos="0 0 0">
+                                                            <inertial pos="0 0 0.023" quat="0.707 -0.004 0.004 0.707" mass="0.014" diaginertia="1e-05 1e-05 1e-05"></inertial>
+                                                            <joint name="shadow:RFJ2" type="hinge" pos="0 0 0" axis="1 0 0" range="0 1.571"></joint>
+                                                            <geom class="shadow:D_Vizual" name="shadow:V_rfproximal" mesh="shadow:F3"></geom>
+                                                            <geom class="shadow:DC_Hand" name="shadow:C_rfproximal" type="capsule" pos="0 0 0.0225" size="0.01 0.0225"></geom>
+                                                            <body name="shadow:rfmiddle" pos="0 0 0.045">
+                                                                <inertial pos="0 0 0.012" quat="0.707 0 0 0.707" mass="0.012" diaginertia="1e-05 1e-05 1e-05"></inertial>
+                                                                <joint name="shadow:RFJ1" type="hinge" pos="0 0 0" axis="1 0 0" range="0 1.571"></joint>
+                                                                <geom class="shadow:D_Vizual" name="shadow:V_rfmiddle" mesh="shadow:F2"></geom>
+                                                                <geom class="shadow:DC_Hand" name="shadow:C_rfmiddle" type="capsule" pos="0 0 0.0125" size="0.00805 0.0125"></geom>
+                                                                <body name="shadow:rfdistal" pos="0 0 0.025">
+                                                                    <inertial pos="0 0 0.015" quat="0.707 -0.003 0.003 0.707" mass="0.01" diaginertia="1e-05 1e-05 1e-05"></inertial>
+                                                                    <joint name="shadow:RFJ0" type="hinge" pos="0 0 0" axis="1 0 0" range="0 1.571"></joint>
+                                                                    <geom class="shadow:D_Vizual" name="shadow:V_rfdistal" mesh="shadow:F1" pos="0 0 0.001"></geom>
+                                                                    <geom class="shadow:DC_Hand" name="shadow:C_rfdistal" type="capsule" pos="0 0 0.012" size="0.00705 0.012" condim="4"></geom>
+                                                                    <site name="shadow:S_rftip" pos="0 0 0.026" group="3"></site>
+                                                                    <site class="shadow:D_Touch" name="shadow:Tch_rftip"></site>
+                                                                </body>
+                                                            </body>
+                                                        </body>
+                                                    </body>
+                                                    <body name="shadow:lfmetacarpal" pos="-0.017 0 0.044">
+                                                        <inertial pos="-0.014 0.001 0.014" quat="0.709 -0.092 -0.063 0.696" mass="0.075" diaginertia="1e-05 1e-05 1e-05"></inertial>
+                                                        <joint name="shadow:LFJ4" type="hinge" pos="0 0 0" axis="0.571 0 0.821" range="0 0.785"></joint>
+                                                        <geom class="shadow:D_Vizual" name="shadow:V_lfmetacarpal" pos="-0.016 0 -0.023" mesh="shadow:lfmetacarpal"></geom>
+                                                        <geom class="shadow:DC_Hand" name="shadow:C_lfmetacarpal" type="box" pos="-0.0165 0 0.01" size="0.0095 0.0111 0.025" rgba="0.4 0.5 0.6 0.2"></geom>
+                                                        <body name="shadow:lfknuckle" pos="-0.017 0 0.044">
+                                                            <inertial pos="0 0 0" quat="0.52 0.854 0.006 -0.003" mass="0.008" diaginertia="1e-05 1e-05 1e-05"></inertial>
+                                                            <joint name="shadow:LFJ3" type="hinge" pos="0 0 0" axis="0 1 0" range="-0.349 0.349"></joint>
+                                                            <geom class="shadow:D_Vizual" name="shadow:V_lfknuckle" mesh="shadow:knuckle"></geom>
+                                                            <body name="shadow:lfproximal" pos="0 0 0">
+                                                                <inertial pos="0 0 0.023" quat="0.707 -0.004 0.004 0.707" mass="0.014" diaginertia="1e-05 1e-05 1e-05"></inertial>
+                                                                <joint name="shadow:LFJ2" type="hinge" pos="0 0 0" axis="1 0 0" range="0 1.571"></joint>
+                                                                <geom class="shadow:D_Vizual" name="shadow:V_lfproximal" mesh="shadow:F3"></geom>
+                                                                <geom class="shadow:DC_Hand" name="shadow:C_lfproximal" type="capsule" pos="0 0 0.0225" size="0.01 0.0225"></geom>
+                                                                <body name="shadow:lfmiddle" pos="0 0 0.045">
+                                                                    <inertial pos="0 0 0.012" quat="0.707 0 0 0.707" mass="0.012" diaginertia="1e-05 1e-05 1e-05"></inertial>
+                                                                    <joint name="shadow:LFJ1" type="hinge" pos="0 0 0" axis="1 0 0" range="0 1.571"></joint>
+                                                                    <geom class="shadow:D_Vizual" name="shadow:V_lfmiddle" mesh="shadow:F2"></geom>
+                                                                    <geom class="shadow:DC_Hand" name="shadow:C_lfmiddle" type="capsule" pos="0 0 0.0125" size="0.00805 0.0125"></geom>
+                                                                    <body name="shadow:lfdistal" pos="0 0 0.025">
+                                                                        <inertial pos="0 0 0.015" quat="0.707 -0.003 0.003 0.707" mass="0.01" diaginertia="1e-05 1e-05 1e-05"></inertial>
+                                                                        <joint name="shadow:LFJ0" type="hinge" pos="0 0 0" axis="1 0 0" range="0 1.571"></joint>
+                                                                        <geom class="shadow:D_Vizual" name="shadow:V_lfdistal" mesh="shadow:F1" pos="0 0 0.001"></geom>
+                                                                        <geom class="shadow:DC_Hand" name="shadow:C_lfdistal" type="capsule" pos="0 0 0.012" size="0.00705 0.012" condim="4"></geom>
+                                                                        <site name="shadow:S_lftip" pos="0 0 0.026" group="3"></site>
+                                                                        <site class="shadow:D_Touch" name="shadow:Tch_lftip"></site>
+                                                                    </body>
+                                                                </body>
+                                                            </body>
+                                                        </body>
+                                                    </body>
+                                                    <body name="shadow:thbase" pos="0.034 -0.009 0.029" axisangle="0 1 0 0.785">
+                                                        <inertial pos="0 0 0" mass="0.01" diaginertia="1e-05 1e-05 1e-05"></inertial>
+                                                        <joint name="shadow:THJ4" type="hinge" pos="0 0 0" axis="0 0 -1" range="-1.047 1.047"></joint>
+                                                        <geom name="shadow:V_thbase" type="box" group="1" pos="0 0 0" size="0.001 0.001 0.001"></geom>
+                                                        <body name="shadow:thproximal" pos="0 0 0">
+                                                            <inertial pos="0 0 0.017" quat="0.982 0 0.001 0.191" mass="0.016" diaginertia="1e-05 1e-05 1e-05"></inertial>
+                                                            <joint name="shadow:THJ3" type="hinge" pos="0 0 0" axis="1 0 0" range="0 1.222"></joint>
+                                                            <geom class="shadow:D_Vizual" name="shadow:V_thproximal" mesh="shadow:TH3_z"></geom>
+                                                            <geom class="shadow:DC_Hand" name="shadow:C_thproximal" type="capsule" pos="0 0 0.019" size="0.013 0.019" rgba="0.4 0.5 0.6 0.1"></geom>
+                                                            <body name="shadow:thhub" pos="0 0 0.038">
+                                                                <inertial pos="0 0 0" mass="0.002" diaginertia="1e-05 1e-05 1e-05"></inertial>
+                                                                <joint name="shadow:THJ2" type="hinge" pos="0 0 0" axis="1 0 0" range="-0.209 0.209"></joint>
+                                                                <geom name="shadow:V_thhub" type="box" group="1" pos="0 0 0" size="0.001 0.001 0.001"></geom>
+                                                                <body name="shadow:thmiddle" pos="0 0 0">
+                                                                    <inertial pos="0 0 0.016" quat="1 -0.001 -0.007 0.003" mass="0.016" diaginertia="1e-05 1e-05 1e-05"></inertial>
+                                                                    <joint name="shadow:THJ1" type="hinge" pos="0 0 0" axis="0 1 0" range="-0.524 0.524"></joint>
+                                                                    <geom class="shadow:D_Vizual" name="shadow:V_thmiddle" mesh="shadow:TH2_z"></geom>
+                                                                    <geom class="shadow:DC_Hand" name="shadow:C_thmiddle" type="capsule" pos="0 0 0.016" size="0.011 0.016"></geom>
+                                                                    <body name="shadow:thdistal" pos="0 0 0.032">
+                                                                        <inertial pos="0 0 0.016" quat="0.999 -0.005 -0.047 0.005" mass="0.016" diaginertia="1e-05 1e-05 1e-05"></inertial>
+                                                                        <joint name="shadow:THJ0" type="hinge" pos="0 0 0" axis="0 1 0" range="-1.571 0"></joint>
+                                                                        <geom class="shadow:D_Vizual" name="shadow:V_thdistal" mesh="shadow:TH1_z"></geom>
+                                                                        <geom class="shadow:DC_Hand" name="shadow:C_thdistal" type="capsule" pos="0 0 0.013" size="0.00918 0.013" condim="4"></geom>
+                                                                        <site name="shadow:S_thtip" pos="0 0 0.0275" group="3"></site>
+                                                                        <site class="shadow:D_Touch" name="shadow:Tch_thtip" size="0.005 0.011 0.016" pos="-0.005 0 0.02"></site>
+                                                                    </body>
+                                                                </body>
+                                                            </body>
+                                                        </body>
+                                                    </body>
+                                                </body>
+                                            </body>
+                                        </body>
+    
+
+                                    </body>
+                                </body>
+                            </body>
+                        </body>
+                    </body>
+                </body>
+            </body>
+        </body>
+    </body>
+</mujoco>

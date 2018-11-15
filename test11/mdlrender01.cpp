@@ -108,11 +108,6 @@ bunny.stl, 50.0, 1.0, 1.0, 10, 0, 0, 0, 0, 0,  0,  3,#OBJ(color3)(pos3)(rot4)(sc
    AxisYY->SetVerticesv(vy, 4); AxisYY->SetMaterial(GetColorMat(360*2.0/8.0, 1.0, 1.0 ));
    AxisZZ->SetVerticesv(vz, 4); AxisZZ->SetMaterial(GetColorMat(360*4.0/8.0, 1.0, 1.0 ));
    
-   TextureSurface* groundface = new TextureSurface;
-   float vground[][3]={{-100,  -100, -8},{100, -100,  -8},
-		               {100, 100, -8},{ 100,  100,  -8} };
-   groundface->SetVerticesv(vground,4); groundface->SetMaterial(GetColorMat(360*7.0/8.0, 1.0, 1.0 ));
-   //=============================================================================
    Material *MatArray[7];
   
    for( i = 0; i <  element_num; i++ )
@@ -161,7 +156,6 @@ bunny.stl, 50.0, 1.0, 1.0, 10, 0, 0, 0, 0, 0,  0,  3,#OBJ(color3)(pos3)(rot4)(sc
   Light1->AddChild(AxisXX);
   Light1->AddChild(AxisYY);
   Light1->AddChild(AxisZZ);
-  Light1->AddChild(groundface);
   
   Node *Root=new Node;
   

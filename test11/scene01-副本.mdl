@@ -1,0 +1,6 @@
+ CAMERA_POS, 2.2, 0.9, 3, 50 , #posx posy posz angle
+SYSROTATION, -90,  1, 0 ,0, 0
+SYSTRANSLTN, -0.5, 0, 0, 2, 0
+bunny.stl, 10.0, 1.0, 1.0, 0, 0, 0, 0, 0, 0, 0, 4 , #OBJ(color3)(pos3)(rot4)(scale1)
+bunny.stl, 40.0, 1.0, 1.0, -10, 0, 0, 0, 0, 0, 0, 2,#OBJ(color3)(pos3)(rot4)(scale1)  
+bunny.stl, 50.0, 1.0, 1.0, 10, 0, 0, 0, 0, 0,  0,  3,#OBJ(color3)(pos3)(rot4)(scale1)   

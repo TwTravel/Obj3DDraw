@@ -1,0 +1,10 @@
+ CAMERA_POS, 5, 0.6, 1.6, 40 , 0,0.6,0,#posx posy posz angle
+SYSROTATION, -75,  1, 0 ,0, 0
+SYSTRANSLTN, -0.5, 0, 0, 2, 0
+base.stl    ,  10.0, 1.0, 1.0,  0 , 0        ,0.235   ,  0,  0, 0, 0, 1 , #OBJ(color3)(pos3)(rot4)(scale1) 
+shoulder.stl,  60.0, 1.0, 1.0,  0 , 0        ,0.1273  ,  20, 0, 0, 1, 1 , #OBJ(color3)(pos3)(rot4)(scale1) 
+upperarm.stl, 110.0, 1.0, 1.0,  0 , 0.220941 ,0       ,  40,  0, 1, 0, 1 , #OBJ(color3)(pos3)(rot4)(scale1) 
+forearm.stl , 150.0, 1.0, 1.0,  0 ,-0.1719   ,0.612   ,  -50,  0, 1, 0, 1 ,
+wrist1.stl  , 200.0, 1.0, 1.0,  0 , 0        ,0.5723  ,  60,  0, 1, 0, 1 ,
+wrist2.stl  , 250.0, 1.0, 1.0,  0 , 0.1149   ,0       ,  30,  0, 0, 1, 1 ,
+wrist3.stl  , 300.0, 1.0, 1.0,  0 , 0        ,0.1157  ,  20,  0, 1, 0, 1 ,

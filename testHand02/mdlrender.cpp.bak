@@ -47,7 +47,7 @@ bunny.stl, 50.0, 1.0, 1.0, 10, 0, 0, 0, 0, 0,  0,  3,#OBJ(color3)(pos3)(rot4)(sc
 		         {0.02 ,0, 100.0},{  0.02,   0, 0.0} };	
   
    int i;
-   double  camx, camy, camz, campov;
+   double  camx, camy, camz, campov, lookatx, lookaty, lookatz;
    double  rot_angle,rot_x,rot_y,rot_z;
    double  trans_x,trans_y,trans_z;
    
@@ -62,10 +62,14 @@ bunny.stl, 50.0, 1.0, 1.0, 10, 0, 0, 0, 0, 0,  0,  3,#OBJ(color3)(pos3)(rot4)(sc
    camz   = atof( trim(strvec[3]).c_str() );
    campov = atof( trim(strvec[4]).c_str() );  
    
+   lookatx = atof( trim(strvec[5]).c_str() );  
+   lookaty = atof( trim(strvec[6]).c_str() ); 
+   lookatz = atof( trim(strvec[7]).c_str() ); 
+   
    Camera *Camera1=new Camera(PERSPECTIVE);
    
    Camera1->SetValue(POSITION, camx, camy, camz);
-   Camera1->SetValue(AIMAT, 0, 0, 0);
+   Camera1->SetValue(AIMAT,  lookatx, lookaty, lookatz);
    Camera1->SetValue(UPDIRECTION, 0, 1, 0);
    Camera1->SetValue(ASPECT, 1);
    Camera1->SetValue(NEAR, 0.1);
@@ -107,6 +111,19 @@ bunny.stl, 50.0, 1.0, 1.0, 10, 0, 0, 0, 0, 0,  0,  3,#OBJ(color3)(pos3)(rot4)(sc
    AxisXX->SetVerticesv(vx, 4); AxisXX->SetMaterial(GetColorMat(360*0.0/8.0, 1.0, 1.0 ));  
    AxisYY->SetVerticesv(vy, 4); AxisYY->SetMaterial(GetColorMat(360*2.0/8.0, 1.0, 1.0 ));
    AxisZZ->SetVerticesv(vz, 4); AxisZZ->SetMaterial(GetColorMat(360*4.0/8.0, 1.0, 1.0 ));
+   
+     TextureSurface* groundface = new TextureSurface;
+   
+   float vground[][3]={{-8,  -2, -1.2},{  2,   -2,  -1.2},
+		                    {2,  5, -1.2},{  -8,   5,  -1.2} };
+				 
+  /* float vground[][3]={{-200,  200, 0.0},{-200, -200, 0.0},
+		               { 200,  -200, 0.0},{ 200, 200, 0.0} };*/
+   groundface->SetVerticesv(vground,4);
+   // groundface->SetVerticesv(vx, 4);
+   groundface->SetMaterial(GetColorMat(360*0.0/8.0, 1.0, 1.0 ));
+   Light1->AddChild(groundface);
+   
   
    vector<StlShape*>        stl_shape_vec;
    vector<Transformation*>  stl_tranf_vec;
@@ -189,11 +206,11 @@ bunny.stl, 50.0, 1.0, 1.0, 10, 0, 0, 0, 0, 0,  0,  3,#OBJ(color3)(pos3)(rot4)(sc
   Root->node_func_buffer[5] =  MatArray[5];
   Root->node_func_buffer[6] =  MatArray[6];   
   
-  Root->node_func_buffer[7]  = 
-  Root->node_func_buffer[8]  = 
-  Root->node_func_buffer[9]  = 
-  Root->node_func_buffer[10] = 
-  Root->node_func_buffer[11] = 
+  Root->node_func_buffer[7]  = stl_tranf_vec[1];
+  Root->node_func_buffer[8]  = stl_tranf_vec[2];
+  Root->node_func_buffer[9]  = stl_tranf_vec[3];
+  Root->node_func_buffer[10] = stl_tranf_vec[4];
+  Root->node_func_buffer[11] = stl_tranf_vec[5];
   
   
   Root->AddChild(SysTrans);

@@ -155,8 +155,7 @@ GLViewer::Display0()
    trans3->Transform[0][0] = int(trans3->Transform[0][0] + 1)%360;             
    trans4->Transform[0][0] = int(trans4->Transform[0][0] + 1)%360;             
    trans5->Transform[0][0] = int(trans5->Transform[0][0] + 1)%360; 
-   
-               
+                 
                                                                                
    ((Material*)(Root[0]->node_func_buffer[0]))->Add();                         
    ((Material*)(Root[0]->node_func_buffer[1]))->Add();                         

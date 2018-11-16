@@ -1,4 +1,4 @@
-SYSCAMERA_POS, 5, 0.6, 1.6, 30 , #posx posy posz angle
+SYSCAMERA_POS, 5, 0.6, 1.6, 40 , 0,0.3,0, #posx posy posz angle
 SYSROTATION, -75,  1, 0 ,0, 0
 SYSTRANSLTN, -0.5, 0, 0, 2, 0
 ur10:base_link     ,SYS_COORD          ,base.stl    ,  10.0, 1.0, 1.0, 0 , 0        ,0.235   ,   0,  0, 0, 0, 1 , #OBJ(color3)(pos3)(rot4)(scale1) 
@@ -9,7 +9,7 @@ ur10:wrist_1_link  ,ur10:forearm_link  ,wrist1.stl  , 200.0, 1.0, 1.0, 0 , 0    
 ur10:wrist_2_link  ,ur10:wrist_1_link  ,wrist2.stl  , 250.0, 1.0, 1.0, 0 , 0.1149   ,0       ,  30,  0, 0, 1, 1 ,
 ur10:wrist_3_link  ,ur10:wrist_2_link  ,wrist3.stl  , 300.0, 1.0, 1.0, 0 , 0        ,0.1157  ,  20,  0, 1, 0, 1 ,
 shadow:forearm     ,ur10:wrist_3_link,shadow_visual/forearm_electric.stl  ,50,1.0,1.0, 0, 0.10, 0.023 ,  -90,1,0, 0, 1, 
-shadow:wrist       ,shadow:forearm,shadow_visual/wrist.stl                ,80,1.0,1.0, 0.02,    0, 0.240 ,   0, 0, 0, 0 ,  0.001,
+shadow:wrist       ,shadow:forearm,shadow_visual/wrist.stl                ,80,1.0,1.0, -0.02,    0, 0.240 ,   0, 0, 0, 0 ,  0.001,
 shadow:palm        ,shadow:wrist , shadow_visual/palm.stl                 , 0,1.0,1.0, 0,    0, 0.034 ,   0, 0, 0, 0 ,  0.001,
 shadow:ffknuckle    ,shadow:palm         ,shadow_visual/knuckle.stl      , 20, 1.0, 1.0 ,0.033  , 0    ,0.095, 0,0,0,0, 0.001,                             
 shadow:ffproximal   ,shadow:ffknuckle    ,shadow_visual/F3.stl           , 90, 1.0, 1.0 ,0      , 0    ,0    , 0,0,0,0, 0.001,                               

@@ -142,7 +142,7 @@ GLViewer::Display0()
     glutSwapBuffers();
   glFlush();
   
-  Transformation* trans1,*trans2,*trans3, *trans4,*trans5; 
+  Transformation *trans1,*trans2,*trans3,*trans4,*trans5; 
   
    trans1 = (Transformation*) Root[0]->node_func_buffer[7]  ;
    trans2 = (Transformation*) Root[0]->node_func_buffer[8]  ;

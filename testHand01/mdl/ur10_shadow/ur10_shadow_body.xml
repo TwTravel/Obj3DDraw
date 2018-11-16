@@ -55,11 +55,8 @@
                                             <inertial pos="0.001 -0.002 0.29" quat="0.982 -0.016 0 -0.188" mass="4" diaginertia="0.01 0.01 0.0075"></inertial>
                                             <geom class="shadow:D_Vizual" pos="0 0.01 0.04" name="shadow:V_forearm" mesh="shadow:forearm" euler="0 0 1.57"></geom>
                                             <geom class="shadow:DC_Hand" name="shadow:C_forearm" type="mesh" mesh="shadow:forearm_cvx" pos="0 0.01 0.04" euler="0 0 1.57" rgba="0.4 0.5 0.6 0.7"></geom>
-                                            <body name="shadow:wrist" pos="0 0 0.256">
-                                                <inertial pos="0.003 0 0.016" quat="0.504 0.496 0.495 0.504" mass="0.3" diaginertia="0.001 0.001 0.001"></inertial>
-                                                <joint name="shadow:WRJ1" type="hinge" pos="0 0 0" axis="0 1 0" range="-0.489 0.14" damping="0.5" armature="0.005"></joint>
-                                                <geom class="shadow:D_Vizual" name="shadow:V_wrist" mesh="shadow:wrist"></geom>
-                                                <geom class="shadow:DC_Hand" name="shadow:C_wrist" type="capsule" pos="0 0 0" quat="0.707 0.707 0 0" size="0.015 0.01" rgba="0.4 0.5 0.6 0.1"></geom>
+                                               <body name="shadow:wrist" pos="0 0 0.256">
+                                                 
                                                 <body name="shadow:palm" pos="0 0 0.034">
                                                     <inertial pos="0.006 0 0.036" quat="0.716 0.044 0.075 0.693" mass="0.3" diaginertia="0.001 0.001 0.001"></inertial>
                                                     <joint name="shadow:WRJ0" type="hinge" pos="0 0 0" axis="1 0 0" range="-0.698 0.489" damping="0.5" armature="0.005"></joint>

@@ -152,8 +152,8 @@ bunny.stl, 50.0, 1.0, 1.0, 10, 0, 0, 0, 0, 0,  0,  3,#OBJ(color3)(pos3)(rot4)(sc
 	    
 	   StlTrans->SetValue(ROTATION    , rot_angle, rot_x,  rot_y, rot_z, 0);
 	   StlTrans->SetValue(TRANSLATION , obj_x ,    obj_y,  obj_z  , 1);
-	   StlTrans->SetValue(SCALE       , obj_scale, obj_scale, obj_scale,2); 
-	   
+	   //StlTrans->SetValue(SCALE       , obj_scale, obj_scale, obj_scale,2); 
+	   StlElement->scale = obj_scale;
 	   StlElement->SetTransform(StlTrans);
        StlElement->SetMaterial(GetColorMat(mat_h, mat_s, mat_v ));  //GetColorMat(360*0.0/8.0, 1.0, 1.0 ));//
        

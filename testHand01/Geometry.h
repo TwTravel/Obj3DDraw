@@ -607,6 +607,7 @@ class StlShape: public Geometry
   void Render();
   std::vector<triangle>  facet;
   string parentname;
+  double scale;
  private:
   float Vertices[1000][3];
   int Size;
@@ -672,11 +673,11 @@ public:
       for(int whichVertex = 0; whichVertex < 3; whichVertex++ )
        {
         // 给出法向量
-      glNormal3f(facet[i].normal.x, facet[i].normal.y, facet[i].normal.z);
+        glNormal3f(facet[i].normal.x, facet[i].normal.y, facet[i].normal.z);
         // 如果对象具有纹理
-        glVertex3f( facet[i].point[whichVertex].x , 
-		            facet[i].point[whichVertex].y , 
-				    facet[i].point[whichVertex].z ); /* */
+        glVertex3f( facet[i].point[whichVertex].x * scale, 
+		            facet[i].point[whichVertex].y * scale, 
+				    facet[i].point[whichVertex].z * scale ); /* */
 		/*glNormal3f(facet[i].normal.z,facet[i].normal.x, facet[i].normal.y);
         // 如果对象具有纹理
         glVertex3f( facet[i].point[whichVertex].z ,

@@ -104,10 +104,10 @@ Transformation::Render()
 	  glRotatef(Transform[i][0], Transform[i][1], Transform[i][2], 
 		    Transform[i][3]);
 	  break;
-	case SCALE:
+	/*case SCALE:
 	  printf("%s name:%s, SCALE:%.2f,%.2f,%.2f\n",(char*)nodespace.c_str(),(char*)nodename.c_str(),
 	        Transform[i][0], Transform[i][1], Transform[i][2]);
-	  glScalef(Transform[i][0], Transform[i][1], Transform[i][2]);
+	  glScalef(Transform[i][0], Transform[i][1], Transform[i][2]);*/
 	  break;
 	default:
 	  break;

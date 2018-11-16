@@ -1,0 +1,37 @@
+
+<mujoco>
+    <default class="ur10:arm">
+        <geom contype='1' conaffinity='1' condim='4' rgba="0 0 0 0"/>
+        <joint armature="0.01" damping='200'/>
+    </default>
+    <default class="ur10:wrist">
+        <geom contype='1' conaffinity='1' condim='4' rgba="0 0 0 0"/>
+        <joint armature="0.01" damping='150'/>
+    </default>
+    <default class="ur10:visual">
+        <geom contype='0' conaffinity='0' density="0"/>
+    </default>
+
+    <default class="shadow:asset_class">
+        <geom friction="1 0.005 0.001" condim="3" margin="0.0005" contype="1" conaffinity="1"></geom>
+        <joint limited="true" damping="0.1" armature="0.001" margin="0.01" frictionloss="0.001"></joint>
+        <site size="0.005" rgba="0.4 0.9 0.4 1"></site>
+        <general ctrllimited="true" forcelimited="true"></general>
+    </default>
+    <default class="shadow:D_Touch">
+        <site type="box" size="0.009 0.004 0.013" pos="0 -0.004 0.018" rgba="0.8 0.8 0.8 0.15" group="4"></site>
+    </default>
+    <default class="shadow:DC_Hand">
+        <geom material="shadow:MatColl" contype="1" conaffinity="0" group="4"></geom>
+    </default>
+    <default class="shadow:D_Vizual">
+        <geom material="shadow:MatViz" contype="0" conaffinity="0" group="1" type="mesh" rgba="0.1 0.1 0.1 1"></geom>
+    </default>
+
+    <default class="ur10:equality_constraint">
+        <equality solimp="0.99 0.995 0.001" solref="0.006 1"/>
+    </default>
+    <default class="shadow:equality_constraint">
+        <equality solimp="0.99 0.995 0.001" solref="0.006 1"/>
+    </default>
+</mujoco>

@@ -1,0 +1,51 @@
+
+<mujoco>
+    <mesh name="ur10:base"           file="ur10_collision/base.stl"     />
+    <mesh name="ur10:shoulder"       file="ur10_collision/shoulder.stl" />
+    <mesh name="ur10:upperarm"       file="ur10_collision/upperarm.stl" />
+    <mesh name="ur10:forearm"        file="ur10_collision/forearm.stl"  />
+    <mesh name="ur10:wrist1"         file="ur10_collision/wrist1.stl"   />
+    <mesh name="ur10:wrist2"         file="ur10_collision/wrist2.stl"   />
+    <mesh name="ur10:wrist3"         file="ur10_collision/wrist3.stl"   />
+
+    <mesh name="ur10:base_v0"           file="ur10_visual/base/base_0.stl"     />
+    <mesh name="ur10:shoulder_v0"       file="ur10_visual/shoulder/shoulder_0.stl" />
+    <mesh name="ur10:shoulder_v1"       file="ur10_visual/shoulder/shoulder_1.stl" />
+    <mesh name="ur10:shoulder_v2"       file="ur10_visual/shoulder/shoulder_2.stl" />
+    <mesh name="ur10:upperarm_v0"       file="ur10_visual/upperarm/upperarm_0.stl" />
+    <mesh name="ur10:upperarm_v1"       file="ur10_visual/upperarm/upperarm_1.stl" />
+    <mesh name="ur10:upperarm_v2"       file="ur10_visual/upperarm/upperarm_2.stl" />
+    <mesh name="ur10:upperarm_v3"       file="ur10_visual/upperarm/upperarm_3.stl" />
+    <mesh name="ur10:forearm_v0"        file="ur10_visual/forearm/forearm_0.stl"  />
+    <mesh name="ur10:forearm_v1"        file="ur10_visual/forearm/forearm_1.stl"  />
+    <mesh name="ur10:forearm_v2"        file="ur10_visual/forearm/forearm_2.stl"  />
+    <mesh name="ur10:forearm_v3"        file="ur10_visual/forearm/forearm_3.stl"  />
+    <mesh name="ur10:forearm_v4"        file="ur10_visual/forearm/forearm_4.stl"  />
+    <mesh name="ur10:wrist1_v0"         file="ur10_visual/wrist1/wrist1_0.stl"   />
+    <mesh name="ur10:wrist1_v1"         file="ur10_visual/wrist1/wrist1_1.stl"   />
+    <mesh name="ur10:wrist1_v2"         file="ur10_visual/wrist1/wrist1_2.stl"   />
+    <mesh name="ur10:wrist2_v0"         file="ur10_visual/wrist2/wrist2_0.stl"   />
+    <mesh name="ur10:wrist2_v1"         file="ur10_visual/wrist2/wrist2_1.stl"   />
+    <mesh name="ur10:wrist2_v2"         file="ur10_visual/wrist2/wrist2_2.stl"   />
+    <mesh name="ur10:wrist3_v0"         file="ur10_visual/wrist3/wrist3_0.stl"   />
+
+    <texture name="ur10:tex"     type="2d"       builtin="flat" height="32" width="32" rgb1="0.45 0.45 0.45" />
+    <texture name="metal"        type="cube"     file="metal2.png"/>
+    <material name="bench:mat"      texture="metal"   shininess="0.1" specular="0.5" reflectance="0.2"/>
+
+    <mesh name="shadow:forearm" file="shadow_visual/forearm_electric.stl"></mesh>
+    <mesh name="shadow:forearm_cvx" file="shadow_visual/forearm_electric_cvx.stl"></mesh>
+    <mesh name="shadow:wrist" scale="0.001 0.001 0.001" file="shadow_visual/wrist.stl"></mesh>
+    <mesh name="shadow:palm" scale="0.001 0.001 0.001" file="shadow_visual/palm.stl"></mesh>
+    <mesh name="shadow:knuckle" scale="0.001 0.001 0.001" file="shadow_visual/knuckle.stl"></mesh>
+    <mesh name="shadow:F3" scale="0.001 0.001 0.001" file="shadow_visual/F3.stl"></mesh>
+    <mesh name="shadow:F2" scale="0.001 0.001 0.001" file="shadow_visual/F2.stl"></mesh>
+    <mesh name="shadow:F1" scale="0.001 0.001 0.001" file="shadow_visual/F1.stl"></mesh>
+    <mesh name="shadow:lfmetacarpal" scale="0.001 0.001 0.001" file="shadow_visual/lfmetacarpal.stl"></mesh>
+    <mesh name="shadow:TH3_z" scale="0.001 0.001 0.001" file="shadow_visual/TH3_z.stl"></mesh>
+    <mesh name="shadow:TH2_z" scale="0.001 0.001 0.001" file="shadow_visual/TH2_z.stl"></mesh>
+    <mesh name="shadow:TH1_z" scale="0.001 0.001 0.001" file="shadow_visual/TH1_z.stl"></mesh>
+
+    <material name="shadow:MatColl" specular="1" shininess="0.3" reflectance="0.5" rgba="0.4 0.5 0.6 1"></material>
+    <material name="shadow:MatViz" specular="0.75" shininess="0.1" reflectance="0.5" rgba="0.93 0.93 0.93 1"></material>
+</mujoco>

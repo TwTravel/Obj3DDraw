@@ -1,0 +1,26 @@
+<body name="shadow:wrist"    pos="0 0 0.256">                                          
+    <body name="shadow:palm" pos="0 0 0.034">                                       
+        <body name="shadow:ffknuckle" pos="0.033 0 0.095">                          
+            <body name="shadow:ffproximal" pos="0 0 0">                             
+                <body name="shadow:ffmiddle" pos="0 0 0.045">                       
+                    <body name="shadow:ffdistal" pos="0 0 0.025">                   
+        <body name="shadow:mfknuckle" pos="0.011 0 0.099">                          
+            <body name="shadow:mfproximal" pos="0 0 0">                             
+                <body name="shadow:mfmiddle" pos="0 0 0.045">                       
+                    <body name="shadow:mfdistal" pos="0 0 0.025">                   
+        <body name="shadow:rfknuckle" pos="-0.011 0 0.095">                         
+            <body name="shadow:rfproximal" pos="0 0 0">                             
+                <body name="shadow:rfmiddle" pos="0 0 0.045">                       
+                    <body name="shadow:rfdistal" pos="0 0 0.025">                   
+        <body name="shadow:lfmetacarpal" pos="-0.017 0 0.044">                      
+            <body name="shadow:lfknuckle" pos="-0.017 0 0.044">                     
+                <body name="shadow:lfproximal" pos="0 0 0">                         
+                    <body name="shadow:lfmiddle" pos="0 0 0.045">                   
+                        <body name="shadow:lfdistal" pos="0 0 0.025">               
+        <body name="shadow:thbase" pos="0.034 -0.009 0.029" axisangle="0 1 0 0.785">
+            <body name="shadow:thproximal" pos="0 0 0">                             
+                <body name="shadow:thhub" pos="0 0 0.038">                          
+                    <body name="shadow:thmiddle" pos="0 0 0">                       
+                        <body name="shadow:thdistal" pos="0 0 0.032">      
+                        
+shadow:wrist       ,shadow:forearm,shadow_visual/wrist.stl                , 0,1.0,1.0, 0, 0, 0.456 , 0, 0, 0, 0 , 0.01,                                  

@@ -144,26 +144,27 @@ GLViewer::Display0()
   
   Transformation *trans1,*trans2,*trans3,*trans4,*trans5; 
   
-   trans1 = (Transformation*) Root[0]->node_func_buffer[7]  ;
-   trans2 = (Transformation*) Root[0]->node_func_buffer[8]  ;
-   trans3 = (Transformation*) Root[0]->node_func_buffer[9]  ;
-   trans4 = (Transformation*) Root[0]->node_func_buffer[10] ;
-   trans5 = (Transformation*) Root[0]->node_func_buffer[11] ;
+   trans1 = (Transformation*) Root[0]->node_func_buffer[30+0]  ;
+   trans2 = (Transformation*) Root[0]->node_func_buffer[30+1]  ;
+   trans3 = (Transformation*) Root[0]->node_func_buffer[30+2]  ;
+   trans4 = (Transformation*) Root[0]->node_func_buffer[30+3] ;
+   trans5 = (Transformation*) Root[0]->node_func_buffer[30+4] ;
                               
    trans1->Transform[0][0] = int(trans1->Transform[0][0] + 1)%360;             
    trans2->Transform[0][0] = int(trans2->Transform[0][0] + 1)%360;             
    trans3->Transform[0][0] = int(trans3->Transform[0][0] + 1)%360;             
    trans4->Transform[0][0] = int(trans4->Transform[0][0] + 1)%360;             
    trans5->Transform[0][0] = int(trans5->Transform[0][0] + 1)%360; 
-                 
-                                                                               
-   ((Material*)(Root[0]->node_func_buffer[0]))->Add();                         
+                    
+	for(int i=0; i<30; i++)
+         ((Material*)(Root[0]->node_func_buffer[i]))->Add();                                                                      
+  /* ((Material*)(Root[0]->node_func_buffer[0]))->Add();                         
    ((Material*)(Root[0]->node_func_buffer[1]))->Add();                         
    ((Material*)(Root[0]->node_func_buffer[2]))->Add();                         
    ((Material*)(Root[0]->node_func_buffer[3]))->Add();                         
    ((Material*)(Root[0]->node_func_buffer[4]))->Add();                         
    ((Material*)(Root[0]->node_func_buffer[5]))->Add();                         
-   ((Material*)(Root[0]->node_func_buffer[6]))->Add();
+   ((Material*)(Root[0]->node_func_buffer[6]))->Add();*/
    
 }
 

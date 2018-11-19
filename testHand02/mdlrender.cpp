@@ -198,19 +198,24 @@ bunny.stl, 50.0, 1.0, 1.0, 10, 0, 0, 0, 0, 0,  0,  3,#OBJ(color3)(pos3)(rot4)(sc
   
   Node *Root=new Node;
   
-  Root->node_func_buffer[0] =  MatArray[0];
+  for(i=0;i<30;i++)
+  {
+	  Root->node_func_buffer[i] =  MatArray[i];
+  }
+  
+  /*Root->node_func_buffer[0] =  MatArray[0];
   Root->node_func_buffer[1] =  MatArray[1];
   Root->node_func_buffer[2] =  MatArray[2];
   Root->node_func_buffer[3] =  MatArray[3];
   Root->node_func_buffer[4] =  MatArray[4];
   Root->node_func_buffer[5] =  MatArray[5];
-  Root->node_func_buffer[6] =  MatArray[6];   
+  Root->node_func_buffer[6] =  MatArray[6];*/   
   
-  Root->node_func_buffer[7]  = stl_tranf_vec[1];
-  Root->node_func_buffer[8]  = stl_tranf_vec[2];
-  Root->node_func_buffer[9]  = stl_tranf_vec[3];
-  Root->node_func_buffer[10] = stl_tranf_vec[4];
-  Root->node_func_buffer[11] = stl_tranf_vec[5];
+  Root->node_func_buffer[30+0]  = stl_tranf_vec[1];
+  Root->node_func_buffer[30+1]  = stl_tranf_vec[2];
+  Root->node_func_buffer[30+2]  = stl_tranf_vec[3];
+  Root->node_func_buffer[30+3]  = stl_tranf_vec[4];
+  Root->node_func_buffer[30+4]  = stl_tranf_vec[5];
   
   
   Root->AddChild(SysTrans);

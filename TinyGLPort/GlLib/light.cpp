@@ -5,7 +5,14 @@ void glopMaterial(GLContext *c,GLParam *p)
 {
   int mode=p[1].i;
   int type=p[2].i;
-  float *v=&p[3].f;
+  
+  float vv[4];
+  vv[0] = p[3].f;
+  vv[1] = p[4].f;
+  vv[2] = p[5].f;
+  vv[3] = p[6].f;
+  float *v=vv;//&p[3].f;
+ // float *v=&p[3].f;
   int i;
   GLMaterial *m;
 

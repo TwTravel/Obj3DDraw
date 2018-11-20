@@ -3,6 +3,7 @@
  */
 
 #include "zgl.h"
+#include <string.h>
 
 static GLTexture *find_texture(GLContext *c,int h)
 {

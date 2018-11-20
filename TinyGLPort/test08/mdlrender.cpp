@@ -18,8 +18,63 @@
     return str.substr(pos);
 }
 
+int ui_loop(int argc, char **argv, const char *name);
+
+void init( void )
+{
+   static GLfloat pos[4] = {5.0, 5.0, 10.0, 0.0 };
+   static GLfloat red[4] = {0.8, 0.1, 0.0, 1.0 };
+   static GLfloat green[4] = {0.0, 0.8, 0.2, 1.0 };
+   static GLfloat blue[4] = {0.2, 0.2, 1.0, 1.0 };
+
+   glLightfv( GL_LIGHT0, GL_POSITION, pos );
+   glEnable( GL_CULL_FACE );
+   glEnable( GL_LIGHTING );
+   glEnable( GL_LIGHT0 );
+   glEnable( GL_DEPTH_TEST );
+
+   /* make the gears */
+   /*gear1 = glGenLists(1);
+   glNewList(gear1, GL_COMPILE);
+   glMaterialfv( GL_FRONT, GL_AMBIENT_AND_DIFFUSE, red );
+   gear( 1.0, 4.0, 1.0, 20, 0.7 );
+   glEndList();
+
+   gear2 = glGenLists(1);
+   glNewList(gear2, GL_COMPILE);
+   glMaterialfv( GL_FRONT, GL_AMBIENT_AND_DIFFUSE, green );
+   gear( 0.5, 2.0, 2.0, 10, 0.7 );
+   glEndList();
+
+   gear3 = glGenLists(1);
+   glNewList(gear3, GL_COMPILE);
+   glMaterialfv( GL_FRONT, GL_AMBIENT_AND_DIFFUSE, blue );
+   gear( 1.3, 2.0, 0.5, 10, 0.7 );
+   glEndList();*/
+
+   glEnable( GL_NORMALIZE );
+}
+
+/* new window size or exposure */
+void reshape( int width, int height )
+{
+   GLfloat  h = (GLfloat) height / (GLfloat) width;
+
+   glViewport(0, 0, (GLint)width, (GLint)height);
+   glMatrixMode(GL_PROJECTION);
+   glLoadIdentity();
+   glFrustum( -1.0, 1.0, -h, h, 5.0, 60.0 );
+   glMatrixMode(GL_MODELVIEW);
+   glLoadIdentity();
+   glTranslatef( 0.0, 0.0, -40.0 );
+   glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
+}
+
+void tkSwapBuffers(void);
+
 int main(int argc, char *argv[])
 {
+  ui_loop(argc, argv, "models");
   printf("hello\n");
   std::vector<std::string> lines;
   
@@ -163,6 +218,7 @@ bunny.stl, 50.0, 1.0, 1.0, 10, 0, 0, 0, 0, 0,  0,  3,#OBJ(color3)(pos3)(rot4)(sc
   MyViewer->CreateWin("Working Hard", 800, 800);
 
   MyViewer->Show(Root);
-   
+  MyViewer->Display0();
+  tkSwapBuffers();
   return 1;
 }

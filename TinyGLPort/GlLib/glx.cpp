@@ -141,10 +141,10 @@ void glXSwapBuffers( Display *dpy, GLXDrawable drawable )
       for(int j=0; j<ctx->image_w;j++)
       {
         C24PixVal Pix = get_pix_color(CPic, j, i);
-        *Pix.b = *ptr; ptr++;
+		ptr++;
+        *Pix.b = *ptr; ptr++;      
         *Pix.g = *ptr; ptr++;
-        *Pix.r = *ptr; ptr++;
-        ptr++;    
+		*Pix.r = *ptr; ptr++;  		
       }
      }
   CPic.Save("img.bmp");

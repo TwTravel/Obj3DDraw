@@ -132,9 +132,9 @@ void inline Camera::Render()
     {
       glMatrixMode(GL_PROJECTION);
       glLoadIdentity();
-      if(Type==ORTHO)
-	glOrtho(x1, x2, y1, y2, Near, Far);
-      else
+    //  if(Type==ORTHO)
+	//glOrtho(x1, x2, y1, y2, Near, Far);
+    //  else
 	gluPerspective(YAngle, Aspect, Near, Far);
       glMatrixMode(GL_MODELVIEW);
     }

@@ -59,11 +59,7 @@ typedef struct tagBITMAPINFOHEADER {
 	DWORD biClrImportant;
 } BITMAPINFOHEADER, *PBITMAPINFOHEADER;
 
-BYTE BMP24FileHead[54]={
-	0x42,0x4D,0x08,0x79,0x02,0x00,0x00,0x00,0x00,0x00,0x36,0x00,0x00,0x00,0x28,0x00,
-		0x00,0x00,0xC8,0x00,0x00,0x00,0x0E,0x01,0x00,0x00,0x01,0x00,0x18,0x00,0x00,0x00,
-		0x00,0x00,0x00,0x00,0x00,0x00,0x12,0x0B,0x00,0x00,0x12,0x0B,0x00,0x00,0x00,0x00,
-		0x00,0x00,0x00,0x00,0x00,0x00};
+
 	
 	struct C24PixVal
 	{BYTE *r,*g,*b,R,G,B;};
@@ -103,10 +99,10 @@ public:
 
 	void inline RandPenColor();
 	void Rectangle(int x1,int y1,int x2,int y2);
-	void ClearPic(int val);
+	void inline ClearPic(int val);
 	int FillRect;
 	C24PixVal BrushColor;
-	C24PixVal GetPenColor(int x,int y);
+	C24PixVal inline GetPenColor(int x,int y);
 
 	void SetColor(int val)
 	{
@@ -153,7 +149,7 @@ inline C24PixVal get_pix_color(C24BitMap&pic,int x,int y);
 
 
 
-C24PixVal C24BitMap::GetPenColor(int x,int y)
+C24PixVal inline C24BitMap::GetPenColor(int x,int y)
 {
 	C24PixVal Temp;
 	Temp = get_pix_color(*this,x,y);
@@ -163,14 +159,14 @@ C24PixVal C24BitMap::GetPenColor(int x,int y)
 	return Temp;
 }
 
-void C24BitMap::ClearPic(int val=0)
+void inline C24BitMap::ClearPic(int val=0)
 {
 int i;	
 Loopi(LineWidth*Height) Buffer[i]= val;
 }
 
 
-void TransAxis(double &X,double&Y,double&dx,double&dy)
+void inline TransAxis(double &X,double&Y,double&dx,double&dy)
 {
  double TmpX,TmpY;
  TmpX = X*dx    + Y*dy;

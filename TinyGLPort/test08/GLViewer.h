@@ -17,7 +17,7 @@ class GLViewer
   void Init(int argc, char **argv);
   void Show(Node *N);
 
- private:
+ //private:
   void GLInit();
   int ViewerIndex;
   char *WinName;
@@ -63,8 +63,8 @@ GLViewer::~GLViewer()
 void
 GLViewer::Init(int argc, char **argv)
 {
-  if(ViewerIndex==0)
-    glutInit(&argc, argv);
+  //if(ViewerIndex==0)
+  //  glutInit(&argc, argv);
 }
 
 void 
@@ -99,15 +99,15 @@ GLViewer::Show(Node *N)
 {
   GLInit();
   Root[ViewerIndex]=N;
-  if(ViewerIndex==(ViewerNum-1))
-    glutMainLoop();
+  //if(ViewerIndex==(ViewerNum-1))
+  //  glutMainLoop();
 }
 
 //private
 void 
 GLViewer::GLInit()
 {
-  glutInitDisplayMode(BufType[ViewerIndex] | GLUT_RGB | GLUT_DEPTH);
+ /* glutInitDisplayMode(BufType[ViewerIndex] | GLUT_RGB | GLUT_DEPTH);
   glutInitWindowSize(WinWidth[ViewerIndex], WinHeight[ViewerIndex]);
   glutCreateWindow(WinName);
   switch(ViewerIndex)
@@ -127,7 +127,7 @@ GLViewer::GLInit()
     default:
       break;
     }
-
+   */
   glEnable(GL_DEPTH_TEST);
   glClearColor(BackColor[0], BackColor[1], BackColor[2], 1.0);
 }
@@ -137,8 +137,8 @@ GLViewer::Display0()
 {printf("=============================================\n");
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
   Root[0]->Traverse();
-  if(BufType[0]==GLUT_DOUBLE)
-    glutSwapBuffers();
+  //if(BufType[0]==GLUT_DOUBLE)
+  //  glutSwapBuffers();
   glFlush();
 }
 
@@ -156,8 +156,8 @@ GLViewer::Display1()
 {printf("--------------------------------------------\n");
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
   Root[1]->Traverse();
-  if(BufType[1]==GLUT_DOUBLE)
-    glutSwapBuffers();
+  //if(BufType[1]==GLUT_DOUBLE)
+  //  glutSwapBuffers();
   glFlush();
 }
 
@@ -174,8 +174,8 @@ GLViewer::Display2()
 { printf("++++++++++++++++++++++++++++++++++++++++++++");
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
   Root[2]->Traverse();
-  if(BufType[2]==GLUT_DOUBLE)
-    glutSwapBuffers();
+  //if(BufType[2]==GLUT_DOUBLE)
+  //  glutSwapBuffers();
   glFlush();
 }
 

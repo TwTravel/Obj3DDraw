@@ -250,7 +250,7 @@ inline void
 Line::Render()
 {
   printf("%s name:%s\n",(char*)nodespace.c_str(),(char*)nodename.c_str());
-  glPushAttrib(GL_ALL_ATTRIB_BITS);
+  //glPushAttrib KH(GL_ALL_ATTRIB_BITS);
 
   if(ColorNode)
     ColorNode->Render();
@@ -266,7 +266,7 @@ Line::Render()
     glVertex3fv(Vertices[1]);
   glEnd();  
     
-  glPopAttrib();
+  //glPopAttrib KH();
   
 }
 
@@ -346,7 +346,7 @@ Cube::Render()
 {
   printf("%s name:%s\n",(char*)nodespace.c_str(),(char*)nodename.c_str());
   int i;
-  glPushAttrib(GL_ALL_ATTRIB_BITS);
+  //glPushAttrib KH(GL_ALL_ATTRIB_BITS);
 
   if(ColorNode)
     ColorNode->Render();
@@ -381,7 +381,7 @@ Cube::Render()
   Polygon(5, 4, 0, 1);
   */
 
-  glPopAttrib();
+  //glPopAttrib KH();
 }
 
 
@@ -419,7 +419,7 @@ inline void
 Cylinder::Render()
 {
   printf("%s *name:%s\n",(char*)nodespace.c_str(),(char*)nodename.c_str());
-  glPushAttrib(GL_ALL_ATTRIB_BITS);
+  //glPushAttrib KH(GL_ALL_ATTRIB_BITS);
 
   if(ColorNode)
     ColorNode->Render();
@@ -431,10 +431,10 @@ Cylinder::Render()
     {StyleNode->nodespace = ParentNode->nodespace +"</-/>"; StyleNode->Render();}
 
   GLUquadricObj *CylinderObj;
-  CylinderObj=gluNewQuadric();
-  gluCylinder(CylinderObj, Radius, Radius, Height, 30, 30);
+  //KH CylinderObj=gluNewQuadric();
+  //KH gluCylinder(CylinderObj, Radius, Radius, Height, 30, 30);
    
-  glPopAttrib();
+  //glPopAttrib KH();
 }
 
 
@@ -469,7 +469,7 @@ inline void
 Sphere::Render()
 {
   printf("%s name:%s\n",(char*)nodespace.c_str(),(char*)nodename.c_str());
-  glPushAttrib(GL_ALL_ATTRIB_BITS);
+  //glPushAttrib KH(GL_ALL_ATTRIB_BITS);
 
   if(ColorNode)
     ColorNode->Render();
@@ -481,9 +481,9 @@ Sphere::Render()
     {StyleNode->nodespace = ParentNode->nodespace +"</-/>"; StyleNode->Render();}
   
   printf("%s<-*-> name:%s glutSolidSphere\n",(char*)nodespace.c_str(),(char*)nodename.c_str());
-  glutSolidSphere(Radius, 40, 40);
+  //KH glutSolidSphere(Radius, 40, 40);
 
-  glPopAttrib();
+  //glPopAttrib KH();
 }
 
 class Polygon: public Geometry
@@ -514,7 +514,7 @@ Polygon::Render()
 {
   int i;
   printf("%s name:%s\n",(char*)nodespace.c_str(),(char*)nodename.c_str());
-  glPushAttrib(GL_ALL_ATTRIB_BITS);
+  //glPushAttrib KH(GL_ALL_ATTRIB_BITS);
 
   if(ColorNode)
     ColorNode->Render();
@@ -531,7 +531,7 @@ Polygon::Render()
     glVertex3fv(Vertices[i]);
   glEnd();  
   
-  glPopAttrib();
+  //glPopAttrib KH();
   
 }
 
@@ -640,7 +640,7 @@ StlShape::Render()
 {
   int i;
   printf("%s name:%s\n",(char*)nodespace.c_str(),(char*)nodename.c_str());
-  glPushAttrib(GL_ALL_ATTRIB_BITS);
+  //glPushAttrib KH(GL_ALL_ATTRIB_BITS);
 
   if(ColorNode)
     ColorNode->Render();
@@ -690,7 +690,7 @@ public:
     glVertex3fv(Vertices[i]);
   glEnd();  */
   
-  glPopAttrib();
+  //glPopAttrib KH();
   
 }
 

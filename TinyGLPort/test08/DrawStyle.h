@@ -88,10 +88,10 @@ DrawStyle::Render()
 	}
       glPolygonMode(GL_FRONT_AND_BACK, GlStyle);
     }
-  if(Changed[1])
+  /*if(Changed[1])
     glPointSize(PointSize);
   if(Changed[2])
-    glLineWidth(LineWidth);
+    glLineWidth(LineWidth);*/
 }
 
 

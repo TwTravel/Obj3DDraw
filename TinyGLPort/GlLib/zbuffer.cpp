@@ -463,7 +463,18 @@ void memset_RGB24(void *adr,int r, int v, int b,long count)
     unsigned char *p,R=(unsigned char)r,V=(unsigned char)v,B=(unsigned char)b;
 
     p=(unsigned char *)adr;
-    *p++=R;
+	
+	char RR,GG,BB;
+	RR = r ;
+	GG = v ;
+	BB = b ;
+	 for(i=1;i<count;i++)
+	 {
+		*p = RR; p++;
+		*p = GG; p++;
+		*p = BB; p++;
+	 }
+   /* *p++=R;
     *p++=V;
     *p++=B;
     *p++=R;
@@ -483,7 +494,7 @@ void memset_RGB24(void *adr,int r, int v, int b,long count)
         *pt++=v1;
         *pt++=v2;
         *pt++=v3;
-    }
+    }*/
 }
 
 void ZB_clear(ZBuffer * zb, int clear_z, int z,

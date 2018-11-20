@@ -16,12 +16,19 @@
 #define ZB_POINT_T_MIN ( (1<<21) )
 #define ZB_POINT_T_MAX ( (1<<30)-(1<<21) )
 
-#define ZB_POINT_RED_MIN ( (1<<10) )
+/*#define ZB_POINT_RED_MIN ( (1<<10) )
 #define ZB_POINT_RED_MAX ( (1<<16)-(1<<10) )
 #define ZB_POINT_GREEN_MIN ( (1<<9) )
 #define ZB_POINT_GREEN_MAX ( (1<<16)-(1<<9) )
 #define ZB_POINT_BLUE_MIN ( (1<<10) )
-#define ZB_POINT_BLUE_MAX ( (1<<16)-(1<<10) )
+#define ZB_POINT_BLUE_MAX ( (1<<16)-(1<<10) )*/
+
+#define ZB_POINT_RED_MIN ( (1<<9) )
+#define ZB_POINT_RED_MAX ( (1<<16)-(1<<9) )
+#define ZB_POINT_GREEN_MIN ( (1<<9) )
+#define ZB_POINT_GREEN_MAX ( (1<<16)-(1<<9) )
+#define ZB_POINT_BLUE_MIN ( (1<<9) )
+#define ZB_POINT_BLUE_MAX ( (1<<16)-(1<<9) )
 
 /* display modes */
 #define ZB_MODE_5R6G5B  1  /* true color 16 bits */

@@ -150,9 +150,9 @@ Node::GetColor(Enum Color, float *C)
       C[2]=1.0;
       break;
     case GREY:
-      C[0]=0.5;
-      C[1]=0.5;
-      C[2]=0.5;
+      C[0]=0.7;
+      C[1]=0.2;
+      C[2]=0.2;
       break;
 
     default:
